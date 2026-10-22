@@ -202,19 +202,93 @@ article h2 { font-size: 1.25rem; }
 .fig figcaption { font-family: var(--sans); font-size: .9rem; color: var(--muted); margin-top: .75rem; line-height: 1.5; }
 
 [hidden] { display: none !important; }
+
+/* ===== Fakta Sains redesign: lapisan visual, konten dan logika lama dipertahankan ===== */
+:root{--bg:#edf3f6;--paper:#fff;--ink:#172d3b;--muted:#627681;--line:#dce6eb;--accent:#087681;--kuat:#19704b;--syarat:#a96508;--debat:#6550a1;--serif:"Literata",Georgia,serif;--sans:"Instrument Sans",system-ui,sans-serif;--shadow:0 8px 28px rgba(26,62,77,.055)}
+html{scroll-behavior:smooth;scroll-padding-top:1.5rem}body{font-size:15px;line-height:1.65;background:var(--bg);color:var(--ink)}
+.wrap{max-width:1160px;padding:0 28px}.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid #e2eaf0}.top .wrap{min-height:68px;padding-top:.65rem;padding-bottom:.65rem;gap:1rem}.brand{display:flex;align-items:center;gap:.6rem;font-size:1.05rem}.brand-mark{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:10px;background:#e6f3f4;color:var(--accent);font-size:1.45rem}.top nav{display:flex;align-items:center;gap:clamp(.8rem,2.5vw,2rem)}.top nav a{font-size:.88rem;font-weight:600;color:#425965;padding:.55rem 0}.top nav a:hover{color:var(--accent)}
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(250px,.85fr);align-items:center;gap:1rem;position:relative;overflow:hidden;margin:26px 0 22px;padding:clamp(24px,4vw,48px);background:linear-gradient(120deg,#fff 0%,#f7fbfc 65%,#eef7f8 100%);border:1px solid #e1ebef;border-radius:16px;box-shadow:var(--shadow);min-height:360px}.hero-copy{position:relative;z-index:2}.eyebrow{font:700 .72rem/1.4 var(--sans);letter-spacing:.13em;color:#5c8990;margin:0 0 .75rem}.hero h1{font:700 clamp(2rem,4vw,3.25rem)/1.12 var(--serif);letter-spacing:-.035em;max-width:650px;margin:0 0 1rem}.lead{font:400 1rem/1.7 var(--sans);max-width:570px;margin:0 0 1.25rem;color:var(--muted)}.search{font:400 .92rem var(--sans);min-height:48px;border-radius:9px;padding:.8rem 1rem;box-shadow:0 3px 12px rgba(25,63,75,.035)}.label-filter{font-size:.76rem;font-weight:700;letter-spacing:.03em}.filters{gap:.45rem;margin-top:.2rem}.filters button{font:600 .8rem var(--sans);min-height:36px;padding:.4rem .8rem;border-radius:999px;white-space:nowrap;transition:background .18s,border-color .18s}.filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:white}.filters button:hover{border-color:var(--accent)}.legenda{font-size:.83rem}.legenda summary{min-height:38px}.hero-art{height:300px;position:relative;display:grid;place-items:center;min-width:0}.planet{position:relative;z-index:2;width:min(19vw,225px);min-width:165px;aspect-ratio:1;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 28% 24%,#8dd8e3 0,#287fa0 23%,#174a68 56%,#092f49 78%);box-shadow:inset -18px -16px 30px rgba(0,0,0,.3),inset 8px 5px 18px rgba(255,255,255,.22),0 12px 28px rgba(13,81,105,.18)}.planet:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(25deg,transparent 0 13px,rgba(255,255,255,.07) 14px 15px),radial-gradient(ellipse at 62% 37%,rgba(64,156,104,.95) 0 9%,transparent 10%),radial-gradient(ellipse at 40% 52%,rgba(77,165,119,.9) 0 15%,transparent 16%),radial-gradient(ellipse at 64% 70%,rgba(72,154,105,.9) 0 10%,transparent 11%);border-radius:50%}.land{position:absolute;background:#4d9f76;border:1px solid rgba(205,232,184,.3);filter:drop-shadow(1px 1px 1px #0b4054)}.land-one{width:31%;height:39%;left:23%;top:19%;border-radius:60% 40% 52% 35%;transform:rotate(20deg)}.land-two{width:22%;height:36%;left:48%;top:44%;border-radius:38% 65% 45% 55%;transform:rotate(-18deg)}.land-three{width:20%;height:14%;left:64%;top:22%;border-radius:50% 35% 60% 35%}.orbit{position:absolute;width:94%;height:58%;border:1px solid rgba(8,118,129,.16);border-radius:50%;transform:rotate(-35deg)}.orbit-two{width:105%;height:72%;transform:rotate(54deg);border-color:rgba(8,118,129,.12)}.orbit-dot{position:absolute;width:7px;height:7px;border-radius:50%;background:#0b8790}.dot-one{top:23%;left:20%}.dot-two{right:12%;bottom:28%;background:#8fc8d0}.fact-kicker{font:700 .7rem var(--sans);letter-spacing:.12em;color:#5a8990;margin:0 0 .25rem}.fakta{display:flex;align-items:center;gap:1rem;margin:20px 0 36px;padding:19px 22px;background:linear-gradient(100deg,#fff,#f3fafb);border:1px solid #deebee;border-left:4px solid var(--accent);border-radius:10px;box-shadow:var(--shadow)}.fact-icon{display:grid;place-items:center;flex:0 0 44px;height:44px;border-radius:50%;background:#e5f3f3;color:var(--accent);font-size:1.7rem}.fakta h2{font:700 1rem var(--sans);margin:0 0 .2rem}.fakta p:last-child{font:400 .88rem/1.55 var(--sans);margin:0;color:var(--muted)}.fact-arrow{margin-left:auto;color:var(--accent);font-size:1.7rem}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin:0 0 14px}.section-heading h2{font:700 clamp(1.4rem,2.5vw,1.8rem)/1.2 var(--serif);margin:0 0 .25rem}.section-subtitle{margin:0;color:var(--muted);font:400 .88rem var(--sans)}.text-link{font:700 .82rem var(--sans);text-decoration:none;white-space:nowrap}.text-link span{margin-left:.3rem}.hitung{margin:0 0 .8rem;font-size:.8rem}
+.daftar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:0 0 34px;margin:0}.daftar li{min-width:0;border:1px solid #dfe8ed;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 4px 15px rgba(25,63,75,.04);transition:transform .18s,box-shadow .18s,border-color .18s}.daftar li:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(25,63,75,.1);border-color:#c5dce1}.daftar li:last-child{border-bottom:1px solid #dfe8ed}.daftar a{height:100%;display:flex;flex-direction:column;padding:0;color:inherit;text-decoration:none}.daftar a:hover h3{text-decoration:none;color:var(--accent)}.card-visual{height:135px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 70% 25%,#276a87,#0b293d 65%,#071b2a);color:white}.card-visual:before,.card-visual:after{content:"";position:absolute;border:1px solid rgba(148,223,231,.38);border-radius:50%;width:180px;height:85px;transform:rotate(-28deg)}.card-visual:after{width:140px;height:110px;transform:rotate(48deg);border-color:rgba(148,223,231,.2)}.visual-symbol{z-index:1;font-size:3rem;filter:drop-shadow(0 3px 9px rgba(0,0,0,.3))}.visual-evolusi-darwin{background:radial-gradient(circle at 48% 45%,#267b98,#071f32 76%)}.visual-mekanika-newton{background:radial-gradient(circle at 70% 30%,#597b96,#10273c 72%)}.visual-big-bang{background:radial-gradient(circle at 50% 50%,#a77e52,#202447 28%,#07172d 74%)}.visual-materi-gelap{background:radial-gradient(circle at 60% 48%,#3c3d8d,#09172c 70%)}.card-body{padding:14px 15px 16px;display:flex;flex-direction:column;align-items:flex-start;flex:1;width:100%}.meta{gap:.45rem;font-size:.72rem}.meta .chip{font-size:.69rem;padding:.08rem .48rem}.daftar h3{font:700 1rem/1.35 var(--serif);margin:.55rem 0 .35rem}.daftar p{font:400 .82rem/1.55 var(--sans);color:var(--muted);margin:0}.chip{font-size:.75rem;padding:.1rem .5rem;border:0;background:color-mix(in srgb,var(--c) 12%,white);color:var(--c)}.s-kuat{--c:var(--kuat)}.s-syarat{--c:var(--syarat)}.s-debat{--c:var(--debat)}.kosong{grid-column:1/-1;padding:2rem;border:1px dashed var(--line);border-radius:10px}.about-strip{display:flex;align-items:center;gap:1rem;padding:22px 24px;margin:0 0 38px;background:#e2f1f2;border-radius:12px}.about-symbol{display:grid;place-items:center;flex:0 0 46px;height:46px;background:#fff;border-radius:12px;color:var(--accent);font-size:1.7rem}.about-strip h2{font:700 1.05rem var(--sans);margin:0 0 .3rem}.about-strip p{margin:0;font:400 .88rem/1.6 var(--sans);color:#526c75}.footer{background:#fff;border-top:1px solid var(--line);font-size:.82rem}.footer .wrap{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding-top:1.2rem;padding-bottom:1.2rem}.footer a{font-weight:700;text-decoration:none}
+/* Detail teori */
+article{padding:28px 0 52px;max-width:900px;margin:0 auto}article h1{font:700 clamp(2rem,4vw,2.8rem)/1.15 var(--serif);letter-spacing:-.025em;margin:.4rem 0 .8rem}article h2{font:700 1.3rem/1.3 var(--serif);margin:2rem 0 .65rem;padding-bottom:.4rem;border-bottom:1px solid var(--line)}article p{line-height:1.8}article .tokoh{font:400 .88rem/1.6 var(--sans);margin:.3rem 0 1rem}article>p:not(.tokoh){max-width:780px}.detail-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:22px 0}.detail-meta>div{padding:13px;border:1px solid var(--line);background:#fff;border-radius:9px;min-width:0}.detail-meta .detail-label{display:block;font:700 .7rem var(--sans);color:var(--muted);margin-bottom:.35rem}.detail-meta strong{font:600 .85rem/1.45 var(--sans);overflow-wrap:anywhere}.spektrum{gap:8px;margin:1.4rem 0 .5rem;font-size:.78rem}.spektrum span{border:1px solid var(--line);border-bottom:3px solid var(--line);border-radius:7px;padding:.7rem .5rem;background:#fff}.spektrum span.on{border-color:var(--c);border-bottom-color:var(--c);background:color-mix(in srgb,var(--c) 8%,white)}.spektrum-arti{font-size:.9rem}.spektrum-note{padding:14px 16px;border-left:3px solid var(--accent);background:#f1f8f9;border-radius:0 8px 8px 0;font-size:.92rem}.fig{border-radius:10px;padding:1.25rem}.sumber li{overflow-wrap:anywhere}.footer #kembali{padding:.5rem .8rem;border:1px solid var(--line);border-radius:8px}
+@media(max-width:900px){.wrap{max-width:760px;padding:0 22px}.hero{grid-template-columns:minmax(0,1fr) minmax(180px,.6fr);padding:26px;min-height:300px}.hero-art{height:230px}.planet{min-width:145px}.daftar{grid-template-columns:repeat(2,minmax(0,1fr))}.card-visual{height:150px}}
+@media(max-width:600px){body{font-size:14px}.wrap{padding:0 16px}.top .wrap{min-height:58px}.brand{font-size:.98rem}.brand-mark{width:29px;height:29px}.top nav{gap:.8rem}.top nav a{font-size:.78rem}.hero{grid-template-columns:1fr;margin:14px 0;padding:24px 19px 12px;gap:0;border-radius:12px;min-height:0}.hero h1{font-size:clamp(2rem,9vw,2.6rem)}.lead{font-size:.91rem}.hero-art{height:185px;grid-row:1;opacity:.92}.planet{min-width:130px;width:145px}.orbit{width:65%;height:78%}.orbit-two{width:73%;height:90%}.hero-copy{grid-row:2}.filters{overflow-x:auto;flex-wrap:nowrap;margin:0 -4px;padding:4px 4px 7px;scrollbar-width:none}.filters::-webkit-scrollbar{display:none}.filters button{flex:0 0 auto}.fakta{margin:14px 0 28px;padding:15px;gap:.7rem}.fact-icon{flex-basis:38px;height:38px}.fakta h2{font-size:.95rem}.fakta p:last-child{font-size:.82rem}.section-heading{align-items:start}.section-heading h2{font-size:1.45rem}.section-subtitle{font-size:.8rem}.text-link{font-size:.75rem;margin-top:1rem}.daftar{gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}.card-visual{height:112px}.visual-symbol{font-size:2.4rem}.card-body{padding:11px 10px 13px}.meta{font-size:.67rem;gap:.3rem}.meta .chip{font-size:.63rem}.daftar h3{font-size:.92rem}.daftar p{font-size:.76rem}.about-strip{padding:17px;align-items:flex-start}.about-strip p{font-size:.8rem}.footer .wrap{align-items:flex-start;flex-direction:column;gap:.7rem}article{padding:22px 0 36px}article h1{font-size:2rem}article h2{font-size:1.15rem}.detail-meta{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.detail-meta>div{padding:11px}.spektrum{display:grid;grid-template-columns:1fr;gap:6px}.spektrum span{border:1px solid var(--line);border-left:4px solid var(--line);border-radius:7px;padding:.6rem .7rem}.spektrum span.on{border-left-color:var(--c)}.fig{padding:.75rem}.fig svg text{font-size:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.daftar li{transition:none}}
+
+
+/* ===== Patch responsif v2: cegah konten melebar di layar HP ===== */
+html, body { width:100%; max-width:100%; }
+body { overflow-x: clip; }
+.wrap { width:100%; min-width:0; }
+main, #home, .hero, .hero-copy, article, .section-heading, .fakta { min-width:0; max-width:100%; }
+.hero-copy { overflow-wrap:anywhere; }
+.hero h1, article h1 { max-width:100%; overflow-wrap:break-word; word-break:normal; }
+.lead, .search, .label-filter, .legenda { min-width:0; max-width:100%; }
+.search { display:block; width:100%; }
+.daftar, .daftar li, .daftar a, .card-body { min-width:0; }
+.daftar p, .daftar h3, .meta { overflow-wrap:anywhere; }
+.hero-art { min-width:0; max-width:100%; overflow:hidden; }
+.hero-earth-photo { position:relative; z-index:2; display:block; width:min(100%,260px); aspect-ratio:1; object-fit:cover; border-radius:50%; box-shadow:inset 0 0 25px rgba(0,0,0,.25),0 12px 28px rgba(13,81,105,.18); }
+.card-visual img { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:cover; }
+.card-visual::before, .card-visual::after { z-index:1; pointer-events:none; }
+.visual-symbol { display:none; }
+/* Tablet dan HP besar: jangan paksa kolom hero yang terlalu sempit. */
+@media (max-width: 760px) {
+  .wrap { padding-left:clamp(14px,4vw,22px); padding-right:clamp(14px,4vw,22px); }
+  .hero { grid-template-columns:minmax(0,1fr); gap:0; padding:clamp(18px,4vw,28px); min-height:0; }
+  .hero-art { grid-row:1; height:clamp(150px,38vw,230px); margin:0 auto 8px; width:100%; }
+  .hero-earth-photo { width:clamp(135px,38vw,205px); }
+  .hero-copy { grid-row:2; width:100%; }
+  .hero h1 { font-size:clamp(1.8rem,6.7vw,2.55rem); line-height:1.12; letter-spacing:-.03em; }
+  .lead { font-size:.94rem; line-height:1.65; }
+  .top .wrap { flex-wrap:wrap; }
+  .top nav { flex-wrap:wrap; gap:clamp(.55rem,2.5vw,1rem); }
+  .top nav a { white-space:nowrap; }
+  .filters { max-width:100%; overflow-x:auto; overscroll-behavior-x:contain; }
+  .daftar { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 420px) {
+  .top .wrap { gap:.45rem; }
+  .brand { font-size:.9rem; }
+  .top nav { gap:.55rem; }
+  .top nav a { font-size:.73rem; }
+  .hero { margin-top:10px; padding:17px 15px 18px; }
+  .hero h1 { font-size:clamp(1.7rem,8vw,2.05rem); }
+  .hero-art { height:150px; }
+  .hero-earth-photo { width:132px; }
+  .section-heading { flex-wrap:wrap; }
+  .text-link { margin-top:0; }
+  .daftar { gap:9px; }
+  .card-visual { height:100px; }
+  .card-body { padding:10px 9px 12px; }
+  .daftar h3 { font-size:.88rem; }
+  .daftar p { font-size:.74rem; }
+  .detail-meta { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  article h1 { font-size:clamp(1.7rem,7vw,2rem); }
+}
+@media (max-width: 340px) {
+  .top .wrap { align-items:flex-start; flex-direction:column; }
+  .top nav { width:100%; justify-content:space-between; }
+  .daftar { grid-template-columns:minmax(0,1fr); }
+  .card-visual { height:145px; }
+  .detail-meta { grid-template-columns:minmax(0,1fr); }
+}
+
   </style>
 </head>
 <body>
   <header class="top">
     <div class="wrap">
-      <a class="brand" href="#">Fakta Sains</a>
-      <nav><a href="#">Beranda</a></nav>
+      <a class="brand" href="#" aria-label="Fakta Sains, beranda"><span class="brand-mark" aria-hidden="true">✳</span> Fakta Sains</a>
+      <nav aria-label="Navigasi utama"><a href="#">Beranda</a><a href="#daftar" id="nav-teori">Teori</a><a href="#tentang" id="nav-tentang">Tentang</a></nav>
     </div>
   </header>
 
   <main class="wrap">
     <div id="home">
       <section class="hero">
+        <div class="hero-copy">
+        <p class="eyebrow">JENDELA PENGETAHUAN</p>
         <h1>Teori sains, lengkap dengan seberapa kuat buktinya</h1>
         <p class="lead">Setiap teori ditandai: terbukti kuat, berlaku dengan syarat, atau belum terkonfirmasi langsung. Kamu langsung tahu seberapa jauh teori itu bisa dipercaya.</p>
         <label for="cari" style="position:absolute;left:-9999px">Cari teori</label>
@@ -224,13 +298,18 @@ article h2 { font-size: 1.25rem; }
         <p class="label-filter" id="lbl-status">Status bukti</p>
         <div class="filters" id="filter" role="group" aria-labelledby="lbl-status"></div>
         <details class="legenda"><summary>Apa arti label ini?</summary><dl id="legenda"></dl></details>
+        </div>
+        <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><img class="hero-earth-photo" src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="" loading="eager"><span class="orbit-dot dot-one"></span><span class="orbit-dot dot-two"></span></div>
       </section>
       <aside class="fakta">
-        <h2>Fakta hari ini</h2>
-        <p id="fakta"></p>
+        <div class="fact-icon" aria-hidden="true">✧</div><div><p class="fact-kicker">FAKTA HARI INI</p>
+        <h2>Hal kecil, wawasan besar</h2>
+        <p id="fakta"></p></div><span class="fact-arrow" aria-hidden="true">›</span>
       </aside>
+      <div class="section-heading"><div><p class="eyebrow">JELAJAHI ILMU</p><h2>Teori populer</h2><p class="section-subtitle">Mulai dari gagasan dasar, lalu telusuri bukti dan batasannya.</p></div><a href="#daftar" class="text-link">Lihat semua <span aria-hidden="true">→</span></a></div>
       <p class="hitung" id="hitung" aria-live="polite"></p>
       <ul class="daftar" id="daftar"></ul>
+      <section class="about-strip" id="tentang"><span class="about-symbol" aria-hidden="true">◎</span><div><h2>Sains bukan sekadar jawaban</h2><p>Pelajari gagasan, bukti yang mendukungnya, dan batas pengetahuan kita. Setiap halaman mencantumkan sumber untuk ditelusuri lebih lanjut.</p></div></section>
     </div>
 
     <article id="isi" hidden></article>
@@ -1039,6 +1118,8 @@ const FAKTA = [
     var daftar = document.getElementById("daftar");
     var filter = document.getElementById("filter");
     var JUDUL_HOME = document.title;
+    document.getElementById("nav-teori").addEventListener("click", function (e) { e.preventDefault(); document.getElementById("daftar").scrollIntoView({ behavior: "smooth", block: "start" }); });
+    document.getElementById("nav-tentang").addEventListener("click", function (e) { e.preventDefault(); document.getElementById("tentang").scrollIntoView({ behavior: "smooth", block: "start" }); });
     TEORI.forEach(function (t) { Object.assign(t, PERLUASAN[t.id] || {}); });
 
     function el(tag, teks, kelas) {
@@ -1082,12 +1163,37 @@ const FAKTA = [
         var li = el("li");
         var a = el("a");
         a.href = "#" + encodeURIComponent(t.id);
+        var visual = el("div", "", "card-visual visual-" + t.id);
+        visual.setAttribute("aria-hidden", "true");
+        var imageSources = {
+          "evolusi-darwin": "https://images.unsplash.com/photo-1530210124550-912dc1381cb8?auto=format&fit=crop&w=800&q=82",
+          "mekanika-newton": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&q=82",
+          "big-bang": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&q=82",
+          "materi-gelap": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&q=82",
+          "relativitas": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=82",
+          "tektonik-lempeng": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=82",
+          "teori-atom": "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=82"
+        };
+        if (imageSources[t.id]) {
+          var photo = el("img");
+          photo.src = imageSources[t.id];
+          photo.alt = "";
+          photo.loading = "lazy";
+          photo.onerror = function () { photo.remove(); };
+          visual.appendChild(photo);
+        }
+        var symbol = el("span", "", "visual-symbol");
+        symbol.textContent = "";
+        visual.appendChild(symbol);
+        var body = el("div", "", "card-body");
         var meta = el("div", "", "meta");
         meta.appendChild(el("span", t.bidang));
         meta.appendChild(el("span", STATUS[t.status], "chip s-" + t.status));
-        a.appendChild(meta);
-        a.appendChild(el("h3", t.judul));
-        a.appendChild(el("p", t.ringkas));
+        body.appendChild(meta);
+        body.appendChild(el("h3", t.judul));
+        body.appendChild(el("p", t.ringkas));
+        a.appendChild(visual);
+        a.appendChild(body);
         li.appendChild(a);
         daftar.appendChild(li);
       });
@@ -1200,6 +1306,14 @@ const FAKTA = [
       isi.appendChild(el("h1", t.judul));
       isi.appendChild(el("p", t.tokoh + ", " + t.tahun, "tokoh"));
       isi.appendChild(el("p", t.ringkas));
+      var facts = el("div", "", "detail-meta");
+      [["Status bukti", STATUS[t.status]], ["Bidang", t.bidang], ["Periode", t.tahun], ["Tokoh", t.tokoh]].forEach(function (item) {
+        var box = el("div");
+        box.appendChild(el("span", item[0], "detail-label"));
+        box.appendChild(el("strong", item[1]));
+        facts.appendChild(box);
+      });
+      isi.appendChild(facts);
 
       var sp = el("div", "", "spektrum s-" + t.status);
       sp.setAttribute("role", "img");
