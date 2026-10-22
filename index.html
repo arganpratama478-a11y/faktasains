@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fakta Sains: teori dan seberapa kuat buktinya</title>
+  <meta name="description" content="Kumpulan teori sains, dari evolusi Darwin sampai teori yang berlaku dengan syarat, lengkap dengan bukti dan batasannya.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg: #f4f7f9;
+  --paper: #ffffff;
+  --ink: #16232d;
+  --muted: #55666f;
+  --line: #d3dde4;
+  --accent: #0d6872;
+  --kuat: #1d6b41;
+  --syarat: #96580a;
+  --debat: #594a97;
+  --serif: "Literata", Georgia, "Times New Roman", serif;
+  --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-padding-top: 1rem; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.wrap { max-width: 44rem; margin: 0 auto; padding: 0 1.25rem; }
+
+/* Header */
+.top { border-bottom: 1px solid var(--line); background: var(--paper); }
+.top .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: .9rem; padding-bottom: .9rem; }
+.brand { font-family: var(--sans); font-weight: 700; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+.top nav a { font-family: var(--sans); font-size: .95rem; text-decoration: none; }
+
+/* Beranda */
+.hero { padding: 2rem 0 1.25rem; }
+@media (min-width: 640px) { .hero { padding: 3rem 0 1.5rem; } }
+h1 {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 6.5vw, 2.9rem);
+  line-height: 1.12;
+  letter-spacing: -.02em;
+  margin: 0 0 1rem;
+}
+.lead { color: var(--muted); margin: 0 0 1.5rem; max-width: 36rem; }
+
+.search {
+  width: 100%;
+  font: inherit;
+  font-family: var(--sans);
+  padding: .85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.filters { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 0; }
+.filters button {
+  font-family: var(--sans);
+  font-size: .9rem;
+  padding: .45rem .85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+.filters button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+.fakta {
+  margin: 2rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--accent);
+  background: var(--paper);
+}
+.fakta h2 { font-family: var(--sans); font-size: 1rem; margin: 0 0 .25rem; }
+.fakta p { margin: 0; }
+
+.daftar { list-style: none; margin: 0; padding: 0 0 3rem; }
+.daftar li { border-top: 1px solid var(--line); }
+.daftar li:last-child { border-bottom: 1px solid var(--line); }
+.daftar a { display: block; padding: 1.25rem 0; color: inherit; text-decoration: none; }
+.daftar a:hover h3 { text-decoration: underline; }
+.meta { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; font-family: var(--sans); font-size: .9rem; color: var(--muted); }
+.daftar h3 { font-family: var(--sans); font-size: 1.3rem; margin: .35rem 0 .25rem; }
+.daftar p { margin: 0; color: var(--muted); }
+.kosong { padding: 2rem 0; color: var(--muted); font-family: var(--sans); }
+
+.chip {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: .85rem;
+  font-weight: 600;
+  padding: .1rem .6rem;
+  border: 1.5px solid var(--c);
+  color: var(--c);
+  border-radius: 999px;
+}
+.s-kuat { --c: var(--kuat); }
+.s-syarat { --c: var(--syarat); }
+.s-debat { --c: var(--debat); }
+
+/* Halaman teori */
+article { padding: 2.5rem 0 3rem; }
+.tokoh { font-family: var(--sans); color: var(--muted); margin: 0 0 1.5rem; }
+article h2 { font-family: var(--sans); font-size: 1.35rem; margin: 2.25rem 0 .5rem; }
+article ul { padding-left: 1.25rem; margin: 0; }
+article li { margin: .5rem 0; }
+.sumber li { font-size: .95rem; color: var(--muted); }
+
+.spektrum {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin: 1.5rem 0 .5rem;
+  font-family: var(--sans);
+  font-size: .85rem;
+}
+.spektrum span {
+  padding: .5rem .25rem .4rem;
+  border-bottom: 5px solid var(--line);
+  color: var(--muted);
+  line-height: 1.3;
+}
+.spektrum span.on { border-bottom-color: var(--c); color: var(--ink); font-weight: 700; }
+.spektrum-note { margin: 0; font-size: .98rem; color: var(--muted); }
+
+.footer { border-top: 1px solid var(--line); padding: 1.5rem 0; font-family: var(--sans); font-size: .9rem; color: var(--muted); }
+
+@media (max-width: 480px) {
+  .spektrum { font-size: .78rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* Perbaikan HP */
+.filters button { min-height: 44px; line-height: 1.2; }
+.search { font-size: 1rem; min-height: 48px; }
+.daftar a { padding: 1.1rem 0; }
+.daftar h3 { font-size: 1.2rem; line-height: 1.3; }
+article h2 { font-size: 1.25rem; }
+.lead { line-height: 1.65; }
+.label-filter { font-family: var(--sans); font-size: .85rem; color: var(--muted); margin: 1rem 0 .4rem; }
+.filters { margin: 0; }
+@media (max-width: 560px) {
+  .filters { flex-wrap: nowrap; overflow-x: auto; margin: 0 -1.25rem 0 -3px; padding: 3px 1.25rem 6px 3px; scrollbar-width: none; }
+  .filters::-webkit-scrollbar { display: none; }
+  .filters button { flex: 0 0 auto; white-space: nowrap; }
+}
+.kaprah { list-style: none; padding-left: 0; }
+.kaprah li { margin: 1rem 0; padding-left: .9rem; border-left: 3px solid var(--line); }
+.kaprah strong, .istilah dt { font-family: var(--sans); }
+.kaprah strong { font-size: .95rem; }
+.istilah { margin: 0; }
+.istilah dt { font-weight: 700; margin-top: 1rem; }
+.istilah dd { margin: .1rem 0 0; color: var(--muted); }
+.hitung { font-family: var(--sans); font-size: .9rem; color: var(--muted); margin: 1.25rem 0 .5rem; }
+
+/* Prioritas 2: status lebih mudah dipahami */
+.chip::before { margin-right: .3em; }
+.s-kuat.chip::before { content: "\2713"; }
+.s-syarat.chip::before { content: "\25D0"; }
+.s-debat.chip::before { content: "?"; }
+.legenda { margin: 1rem 0 0; font-family: var(--sans); font-size: .95rem; }
+.legenda summary { cursor: pointer; color: var(--accent); min-height: 44px; display: flex; align-items: center; }
+.legenda dl { margin: .25rem 0 0; }
+.legenda dt { margin: .5rem 0 .25rem; }
+.legenda dd { margin: 0 0 .75rem; color: var(--muted); }
+.spektrum-arti { font-family: var(--sans); font-weight: 600; margin: .9rem 0 .25rem; }
+@media (max-width: 560px) {
+  .spektrum { display: flex; flex-direction: column-reverse; gap: 6px; }
+  .spektrum span { border-bottom: 0; border-left: 5px solid var(--line); padding: .55rem .75rem; font-size: .95rem; }
+  .spektrum span.on { border-left-color: var(--c); background: var(--paper); }
+}
+
+/* Prioritas 3: gambar */
+.fig { margin: 1.75rem 0 0; padding: 1rem; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; }
+.fig svg { display: block; width: 100%; height: auto; max-width: 26rem; margin: 0 auto; color: var(--ink); }
+.fig svg text { font-family: var(--sans); font-size: 14px; fill: currentColor; }
+.fig .garis { fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; }
+.fig .aksen { stroke: var(--accent); }
+.fig svg text.aksen-teks { fill: var(--accent); font-weight: 700; }
+.fig .area-newton { fill: var(--accent); fill-opacity: .18; stroke: var(--accent); stroke-width: 2; }
+.fig figcaption { font-family: var(--sans); font-size: .9rem; color: var(--muted); margin-top: .75rem; line-height: 1.5; }
+
+[hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="#">Fakta Sains</a>
+      <nav><a href="#">Beranda</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div id="home">
+      <section class="hero">
+        <h1>Teori sains, lengkap dengan seberapa kuat buktinya</h1>
+        <p class="lead">Setiap teori ditandai: terbukti kuat, berlaku dengan syarat, atau belum terkonfirmasi langsung. Kamu langsung tahu seberapa jauh teori itu bisa dipercaya.</p>
+        <label for="cari" style="position:absolute;left:-9999px">Cari teori</label>
+        <input id="cari" class="search" type="search" placeholder="Cari teori, mis. evolusi" autocomplete="off">
+        <p class="label-filter" id="lbl-bidang">Bidang</p>
+        <div class="filters" id="filter-bidang" role="group" aria-labelledby="lbl-bidang"></div>
+        <p class="label-filter" id="lbl-status">Status bukti</p>
+        <div class="filters" id="filter" role="group" aria-labelledby="lbl-status"></div>
+        <details class="legenda"><summary>Apa arti label ini?</summary><dl id="legenda"></dl></details>
+      </section>
+      <aside class="fakta">
+        <h2>Fakta hari ini</h2>
+        <p id="fakta"></p>
+      </aside>
+      <p class="hitung" id="hitung" aria-live="polite"></p>
+      <ul class="daftar" id="daftar"></ul>
+    </div>
+
+    <article id="isi" hidden></article>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span id="catatan">Isi bersumber dari literatur ilmiah yang tercantum di tiap halaman.</span>
+      <a id="kembali" href="#" hidden>Kembali ke semua teori</a>
+    </div>
+  </footer>
+
+  <script>
+// Tambah teori baru dengan menyalin satu blok { ... } di TEORI.
+// status: "kuat" | "syarat" | "debat"
+const STATUS = {
+  kuat: "Terbukti kuat",
+  syarat: "Berlaku dengan syarat",
+  debat: "Belum terkonfirmasi langsung"
+};
+
+const ARTI = {
+  kuat: "Sudah diuji berulang kali, dan bukti dari banyak bidang saling cocok.",
+  syarat: "Akurat dalam kondisi tertentu. Di luar kondisi itu, dibutuhkan teori lain.",
+  debat: "Gagasannya masuk akal secara ilmiah, tetapi belum ada bukti langsung yang memastikannya."
+};
+
+const TEORI = [
+  {
+    id: "evolusi-darwin",
+    gambar: "pohon",
+    judul: "Teori evolusi Darwin",
+    bidang: "Biologi",
+    status: "kuat",
+    statusNote: "Didukung bukti dari fosil, genetika, dan pengamatan langsung; menjadi kerangka utama biologi modern.",
+    tokoh: "Charles Darwin dan Alfred Russel Wallace",
+    tahun: "1858–1859",
+    ringkas: "Makhluk hidup berubah dari generasi ke generasi lewat seleksi alam, sehingga semua spesies berbagi nenek moyang yang sama.",
+    inti: [
+      "Individu dalam satu populasi berbeda-beda, misalnya ukuran, warna, atau bentuk paruh.",
+      "Sebagian perbedaan itu diwariskan kepada keturunan.",
+      "Individu yang cirinya lebih cocok dengan lingkungan cenderung bertahan dan punya lebih banyak keturunan.",
+      "Selama banyak generasi, ciri yang menguntungkan makin umum dalam populasi, dan spesies baru bisa terbentuk."
+    ],
+    bukti: [
+      "Fosil menunjukkan urutan perubahan bentuk makhluk hidup dari waktu ke waktu, termasuk bentuk peralihan seperti Tiktaalik.",
+      "Anatomi perbandingan: tulang lengan manusia, kelelawar, dan paus punya pola dasar yang sama.",
+      "Perbandingan DNA: makin dekat kekerabatan dua spesies, makin mirip urutan DNA-nya.",
+      "Pengamatan langsung: bakteri menjadi kebal antibiotik, dan paruh burung finch Galápagos berubah mengikuti musim kering."
+    ],
+    batasan: [
+      "Darwin belum tahu cara kerja pewarisan sifat. Genetika melengkapinya pada abad ke-20 lewat sintesis modern.",
+      "Seleksi alam bukan satu-satunya mekanisme; mutasi, hanyutan genetik, dan aliran gen juga berperan.",
+      "Teori ini menjelaskan perubahan dan keanekaragaman makhluk hidup, bukan asal-usul kehidupan pertama."
+    ],
+    sumber: [
+      "Darwin, C. (1859). On the Origin of Species.",
+      "National Academy of Sciences (2008). Science, Evolution, and Creationism."
+    ]
+  },
+  {
+    id: "mekanika-newton",
+    gambar: "wilayah",
+    judul: "Mekanika Newton",
+    bidang: "Fisika",
+    status: "syarat",
+    statusNote: "Sangat akurat untuk kehidupan sehari-hari dan rekayasa, tetapi tidak berlaku pada kecepatan mendekati cahaya, gravitasi ekstrem, atau skala atom.",
+    tokoh: "Isaac Newton",
+    tahun: "1687",
+    ringkas: "Tiga hukum gerak dan hukum gravitasi yang menjelaskan gerak benda, dari bola yang dilempar sampai orbit planet.",
+    inti: [
+      "Benda diam atau bergerak lurus beraturan akan tetap begitu kecuali ada gaya yang bekerja (hukum I).",
+      "Percepatan benda sebanding dengan gaya total dan berbanding terbalik dengan massanya: F = m·a (hukum II).",
+      "Setiap aksi punya reaksi yang sama besar dan berlawanan arah (hukum III).",
+      "Setiap dua benda bermassa saling menarik dengan gaya yang bergantung pada massa dan jaraknya."
+    ],
+    bukti: [
+      "Memprediksi gerak planet dan kembalinya komet dengan akurat.",
+      "Menjadi dasar perhitungan rekayasa: jembatan, kendaraan, dan peluncuran roket.",
+      "Neptunus ditemukan tahun 1846 lewat perhitungan gangguan pada orbit Uranus."
+    ],
+    batasan: [
+      "Mendekati kecepatan cahaya, hasilnya meleset dan harus diganti relativitas khusus.",
+      "Dekat benda bermassa sangat besar, relativitas umum lebih akurat; contohnya pergeseran orbit Merkurius.",
+      "Pada skala atom dan partikel subatom, yang berlaku adalah mekanika kuantum."
+    ],
+    sumber: [
+      "Newton, I. (1687). Philosophiæ Naturalis Principia Mathematica.",
+      "Einstein, A. (1915). Erklärung der Perihelbewegung des Merkur aus der allgemeinen Relativitätstheorie."
+    ]
+  },
+  {
+    id: "big-bang",
+    judul: "Teori Big Bang",
+    bidang: "Astronomi",
+    status: "kuat",
+    statusNote: "Ekspansi dan keadaan awal yang panas didukung kuat; apa yang terjadi pada momen paling awal masih diteliti.",
+    tokoh: "Georges Lemaître, Edwin Hubble, dan lainnya",
+    tahun: "1920-an dan sesudahnya",
+    ringkas: "Alam semesta dulu sangat panas dan padat, lalu mengembang hingga menjadi seperti sekarang, sekitar 13,8 miliar tahun lalu.",
+    inti: [
+      "Ruang itu sendiri mengembang, sehingga galaksi-galaksi saling menjauh.",
+      "Di awalnya alam semesta sangat panas dan padat, lalu mendingin.",
+      "Unsur ringan seperti hidrogen dan helium terbentuk pada beberapa menit pertama; bintang dan galaksi terbentuk jauh sesudahnya."
+    ],
+    bukti: [
+      "Pergeseran merah galaksi: makin jauh sebuah galaksi, makin cepat ia menjauh (Hubble, 1929).",
+      "Radiasi latar gelombang mikro kosmik, sisa cahaya awal alam semesta, ditemukan tahun 1965.",
+      "Perbandingan hidrogen dan helium di alam semesta cocok dengan hitungan teori."
+    ],
+    batasan: [
+      "Teori ini menjelaskan perkembangan alam semesta sejak momen sangat awal, bukan apa yang ada \"sebelum\" itu.",
+      "Fase inflasi, yaitu pengembangan super cepat di awal, masih berupa model yang terus diuji."
+    ],
+    sumber: [
+      "Hubble, E. (1929). A relation between distance and radial velocity among extra-galactic nebulae. PNAS.",
+      "Penzias, A. dan Wilson, R. (1965). A Measurement of Excess Antenna Temperature at 4080 Mc/s. ApJ."
+    ]
+  },
+  {
+    id: "materi-gelap",
+    gambar: "rotasi",
+    judul: "Materi gelap",
+    bidang: "Astronomi",
+    status: "debat",
+    statusNote: "Didukung kuat oleh berbagai pengamatan gravitasi dan kosmologi. Namun, identitas fisik materi gelap belum diketahui dan penjelasan alternatif masih diteliti.",
+    tokoh: "Fritz Zwicky, Vera Rubin, dan Kent Ford",
+    tahun: "1933 dan 1970-an",
+    ringkas: "Dugaan adanya materi tak terlihat yang menambah gravitasi galaksi, karena materi biasa saja tidak cukup menjelaskan gerak bintang dan galaksi.",
+    inti: [
+      "Bintang di tepi galaksi bergerak lebih cepat daripada yang bisa dijelaskan massa yang terlihat.",
+      "Gravitasi tambahan itu diduga berasal dari materi yang tidak memancarkan atau menyerap cahaya.",
+      "Dalam model kosmologi standar, materi gelap sekitar seperempat isi alam semesta."
+    ],
+    bukti: [
+      "Kurva rotasi galaksi yang diukur Vera Rubin dan Kent Ford pada 1970-an.",
+      "Lensa gravitasi: cahaya melengkung lebih kuat daripada yang bisa dijelaskan massa yang terlihat.",
+      "Pola radiasi latar gelombang mikro kosmik cocok dengan model yang memuat materi gelap."
+    ],
+    batasan: [
+      "Partikel materi gelap belum pernah terdeteksi langsung.",
+      "Ada penjelasan alternatif, seperti MOND yang mengubah hukum gravitasi, tetapi belum menjelaskan semua pengamatan.",
+      "Sebagian besar astronom saat ini menganggap materi gelap penjelasan terbaik yang tersedia."
+    ],
+    sumber: [
+      "Zwicky, F. (1933). Die Rotverschiebung von extragalaktischen Nebeln. Helvetica Physica Acta.",
+      "Rubin, V. dan Ford, W. K. (1970). Rotation of the Andromeda Nebula from a Spectroscopic Survey of Emission Regions. ApJ."
+    ]
+  },
+  {
+    id: "relativitas",
+    judul: "Teori relativitas",
+    bidang: "Fisika",
+    status: "kuat",
+    statusNote: "Diuji dengan sangat teliti selama lebih dari satu abad; belum bisa digabung dengan mekanika kuantum untuk kondisi yang paling ekstrem.",
+    tokoh: "Albert Einstein",
+    tahun: "1905 (khusus) dan 1915 (umum)",
+    ringkas: "Ruang, waktu, dan gravitasi tidak bersifat mutlak: semuanya bergantung pada gerak pengamat dan keberadaan massa.",
+    inti: [
+      "Kecepatan cahaya di ruang hampa sama bagi semua pengamat, dan hukum fisika sama bagi semua pengamat yang bergerak lurus beraturan (relativitas khusus).",
+      "Waktu dan jarak bergantung pada gerak pengamat: jam yang bergerak berdetak lebih lambat.",
+      "Massa dan energi setara, dirumuskan sebagai E = mc².",
+      "Gravitasi adalah lengkungan ruang-waktu yang disebabkan oleh massa dan energi (relativitas umum)."
+    ],
+    bukti: [
+      "Pembelokan cahaya bintang oleh gravitasi Matahari, diamati saat gerhana 1919 dan diukur jauh lebih teliti sesudahnya.",
+      "Orbit Merkurius bergeser sesuai hitungan relativitas umum.",
+      "Jam atom di pesawat dan satelit berdetak berbeda dari jam di Bumi; sistem GPS harus mengoreksi efek ini.",
+      "Gelombang gravitasi terdeteksi langsung untuk pertama kalinya pada 2015."
+    ],
+    batasan: [
+      "Relativitas umum belum bisa digabung dengan mekanika kuantum. Ini penting untuk memahami pusat lubang hitam dan momen paling awal alam semesta.",
+      "Pada kecepatan rendah dan gravitasi lemah, hasilnya hampir sama dengan mekanika Newton, sehingga Newton masih cukup untuk kehidupan sehari-hari."
+    ],
+    sumber: [
+      "Einstein, A. (1905). Zur Elektrodynamik bewegter Körper. Annalen der Physik.",
+      "Abbott, B. P. dkk. (2016). Observation of Gravitational Waves from a Binary Black Hole Merger. Physical Review Letters, 116."
+    ]
+  },
+  {
+    id: "tektonik-lempeng",
+    judul: "Tektonik lempeng",
+    bidang: "Geologi",
+    status: "kuat",
+    statusNote: "Didukung pengukuran langsung gerak lempeng, sebaran gempa dan gunung api, serta batuan dasar laut; penyebab pasti geraknya masih diteliti.",
+    tokoh: "Alfred Wegener, lalu banyak ilmuwan pada 1960-an",
+    tahun: "1912 dan 1960-an",
+    ringkas: "Kulit terluar Bumi terpecah menjadi lempeng-lempeng yang bergerak perlahan, dan gerak itu membentuk benua, pegunungan, gempa, dan gunung api.",
+    inti: [
+      "Lapisan terluar Bumi (litosfer) terpecah menjadi beberapa lempeng besar dan banyak lempeng kecil.",
+      "Lempeng bergerak beberapa sentimeter per tahun di atas lapisan mantel yang lebih lunak.",
+      "Gempa, gunung api, dan pegunungan banyak muncul di batas antarlempeng.",
+      "Ada tiga jenis batas: saling menjauh, saling bertumbukan, dan saling bergeser mendatar."
+    ],
+    bukti: [
+      "Garis pantai Afrika dan Amerika Selatan yang cocok, serta fosil dan batuan sejenis di benua yang kini terpisah.",
+      "Pola magnet batuan dasar laut simetris di kedua sisi punggungan tengah samudra.",
+      "Pengukuran GPS menunjukkan gerak lempeng secara langsung.",
+      "Gempa dan gunung api membentuk sabuk mengikuti batas lempeng, misalnya Cincin Api Pasifik."
+    ],
+    batasan: [
+      "Wegener belum punya mekanisme yang meyakinkan, sehingga gagasannya lama ditolak sampai bukti dasar laut ditemukan.",
+      "Penyebab pasti gerak lempeng (arus di mantel, tarikan lempeng yang menunjam, dorongan di punggungan samudra) masih diteliti.",
+      "Teori ini menjelaskan di mana gempa cenderung terjadi, tetapi tidak bisa memastikan kapan."
+    ],
+    sumber: [
+      "Wegener, A. (1915). Die Entstehung der Kontinente und Ozeane.",
+      "Vine, F. J. dan Matthews, D. H. (1963). Magnetic anomalies over oceanic ridges. Nature, 199.",
+      "USGS. This Dynamic Earth: The Story of Plate Tectonics."
+    ]
+  },
+  {
+    id: "teori-atom",
+    judul: "Teori atom",
+    bidang: "Fisika dan Kimia",
+    status: "kuat",
+    statusNote: "Keberadaan atom dan intinya terbukti kuat; model lama seperti model Bohr hanya berlaku untuk kasus sederhana.",
+    tokoh: "John Dalton, J. J. Thomson, Ernest Rutherford, Niels Bohr, dan lainnya",
+    tahun: "1803 sampai 1920-an",
+    ringkas: "Semua materi tersusun dari atom, dan model atom terus disempurnakan seiring bukti baru, dari bola padat sampai awan peluang elektron.",
+    inti: [
+      "Dalton (1803): materi tersusun dari atom, dan atom tiap unsur berbeda.",
+      "Thomson (1897): atom mengandung elektron bermuatan negatif, jadi atom bukan bola padat yang tak terbagi.",
+      "Rutherford (1911): hampir seluruh massa atom terpusat di inti kecil bermuatan positif.",
+      "Bohr (1913): elektron menempati tingkat energi tertentu.",
+      "Model kuantum (1920-an): elektron digambarkan sebagai awan peluang (orbital), bukan lintasan yang pasti."
+    ],
+    bukti: [
+      "Percobaan tabung sinar katode menunjukkan adanya partikel bermuatan negatif yang jauh lebih ringan daripada atom.",
+      "Percobaan lembaran emas: sebagian kecil partikel alfa terpental balik, menandakan inti yang padat.",
+      "Atom hidrogen hanya memancarkan cahaya pada warna tertentu, cocok dengan tingkat energi elektron.",
+      "Mikroskop pemindai terowongan bisa memetakan atom di permukaan satu per satu."
+    ],
+    batasan: [
+      "Model Dalton dan Thomson tidak lagi dipakai, karena atom ternyata punya inti dan tersusun dari partikel yang lebih kecil.",
+      "Model Bohr akurat hanya untuk atom dengan satu elektron seperti hidrogen; atom yang lebih berat dijelaskan model kuantum.",
+      "Proton dan neutron pun tersusun dari kuark, jadi atom bukan unit terkecil materi."
+    ],
+    sumber: [
+      "Thomson, J. J. (1897). Cathode rays. Philosophical Magazine, 44.",
+      "Rutherford, E. (1911). The scattering of α and β particles by matter and the structure of the atom. Philosophical Magazine, 21.",
+      "Bohr, N. (1913). On the constitution of atoms and molecules. Philosophical Magazine, 26."
+    ]
+  },
+  {
+    id: "mekanika-kuantum",
+    judul: "Mekanika kuantum",
+    bidang: "Fisika",
+    status: "kuat",
+    statusNote: "Prediksinya cocok dengan eksperimen dengan ketelitian sangat tinggi; yang masih diperdebatkan adalah maknanya dan cara menggabungkannya dengan gravitasi.",
+    tokoh: "Max Planck, Albert Einstein, Niels Bohr, Werner Heisenberg, Erwin Schrödinger, dan lainnya",
+    tahun: "1900 sampai 1920-an",
+    ringkas: "Pada skala atom, energi datang dalam paket-paket kecil dan keadaan partikel hanya bisa dinyatakan lewat peluang.",
+    inti: [
+      "Energi, misalnya dalam cahaya, diserap dan dipancarkan dalam paket diskret yang disebut kuanta.",
+      "Partikel punya sifat gelombang, dan cahaya punya sifat partikel (dualitas gelombang-partikel).",
+      "Keadaan sistem dinyatakan oleh fungsi gelombang, yang memberi peluang hasil pengukuran, bukan satu hasil yang pasti.",
+      "Posisi dan momentum sebuah partikel tidak bisa diketahui sekaligus dengan ketelitian sembarang (prinsip ketidakpastian Heisenberg)."
+    ],
+    bukti: [
+      "Efek fotolistrik: elektron terlepas dari logam hanya jika cahayanya berfrekuensi cukup tinggi, sesuai gagasan paket energi.",
+      "Percobaan celah ganda: elektron yang ditembakkan satu per satu tetap membentuk pola gelombang.",
+      "Spektrum atom hidrogen dan susunan tabel periodik dapat dijelaskan.",
+      "Menjadi dasar teknologi seperti transistor, laser, dan pencitraan MRI."
+    ],
+    batasan: [
+      "Makna fungsi gelombang dan proses pengukuran masih diperdebatkan. Ada beberapa tafsiran (misalnya Kopenhagen dan dunia-banyak) yang memberi prediksi eksperimen yang sama.",
+      "Belum bisa digabung dengan relativitas umum menjadi teori gravitasi kuantum.",
+      "Pada benda besar sehari-hari, efek kuantumnya sangat kecil sehingga mekanika Newton sudah cukup."
+    ],
+    sumber: [
+      "Planck, M. (1901). Über das Gesetz der Energieverteilung im Normalspectrum. Annalen der Physik, 4.",
+      "Einstein, A. (1905). Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt. Annalen der Physik, 17.",
+      "Heisenberg, W. (1927). Über den anschaulichen Inhalt der quantentheoretischen Kinematik und Mechanik. Zeitschrift für Physik, 43."
+    ]
+  },
+  {
+    id: "teori-string",
+    judul: "Teori string",
+    bidang: "Fisika",
+    status: "debat",
+    statusNote: "Matematikanya menarik, tetapi belum menghasilkan prediksi yang bisa diuji dengan eksperimen saat ini, sehingga belum bisa dibuktikan maupun dibantah.",
+    tokoh: "Gabriele Veneziano, John Schwarz, Michael Green, Edward Witten, dan lainnya",
+    tahun: "1968 dan sesudahnya",
+    ringkas: "Hipotesis bahwa partikel dasar sebenarnya adalah untaian sangat kecil yang bergetar, dan bahwa gagasan ini bisa menyatukan gravitasi dengan mekanika kuantum.",
+    inti: [
+      "Partikel dasar dipandang bukan sebagai titik, melainkan untaian (string) sangat kecil; pola getarnya menentukan jenis partikel.",
+      "Salah satu pola getaran cocok dengan graviton, partikel hipotetis pembawa gravitasi, sehingga teori ini berpotensi menyatukan gravitasi dengan mekanika kuantum.",
+      "Agar konsisten secara matematika, teori ini memerlukan dimensi tambahan: 10 atau 11 dimensi ruang-waktu, tergantung versinya."
+    ],
+    bukti: [
+      "Secara matematika konsisten dan memuat graviton dengan sendirinya.",
+      "Untuk jenis lubang hitam tertentu, teori ini menghasilkan hitungan entropi yang cocok dengan hasil Bekenstein-Hawking.",
+      "Melahirkan alat matematika, seperti korespondensi AdS/CFT, yang kini dipakai juga di bidang lain."
+    ],
+    batasan: [
+      "Belum ada prediksi yang bisa diuji dengan eksperimen yang ada; energi untuk melihat untaian itu jauh melampaui kemampuan alat sekarang.",
+      "Ada sangat banyak versi dan solusi, sehingga sulit menarik satu prediksi yang unik.",
+      "Sebagian fisikawan mempertanyakan apakah teori yang belum bisa diuji layak disebut sains; yang lain menilainya wajar karena masih berkembang."
+    ],
+    sumber: [
+      "Veneziano, G. (1968). Construction of a crossing-symmetric, Regge-behaved amplitude for linearly rising trajectories. Il Nuovo Cimento A, 57.",
+      "Green, M. B. dan Schwarz, J. H. (1984). Anomaly cancellations in supersymmetric D=10 gauge theory and superstring theory. Physics Letters B, 149.",
+      "Strominger, A. dan Vafa, C. (1996). Microscopic origin of the Bekenstein-Hawking entropy. Physics Letters B, 379."
+    ]
+  },
+  {
+    id: "inflasi-kosmik",
+    judul: "Teori inflasi kosmik",
+    bidang: "Astronomi",
+    status: "debat",
+    statusNote: "Menjelaskan beberapa ciri alam semesta dan cocok dengan pengamatan, tetapi buktinya belum langsung dan masih ada model alternatif.",
+    tokoh: "Alan Guth, Andrei Linde, Alexei Starobinsky, dan lainnya",
+    tahun: "1980 sampai 1982",
+    ringkas: "Gagasan bahwa pada sepersekian detik pertama, alam semesta mengembang luar biasa cepat sebelum melanjutkan ekspansi seperti dalam teori Big Bang.",
+    inti: [
+      "Sesaat setelah awal alam semesta, ruang mengembang berkali-kali lipat dalam waktu yang sangat singkat.",
+      "Pengembangan itu meratakan geometri alam semesta dan menyamakan suhunya di wilayah yang berjauhan.",
+      "Fluktuasi kuantum yang sangat kecil ikut terentang, lalu menjadi benih terbentuknya galaksi dan struktur besar."
+    ],
+    bukti: [
+      "Alam semesta teramati hampir datar secara geometri.",
+      "Suhu radiasi latar gelombang mikro hampir sama ke segala arah, padahal wilayah yang berjauhan tampak tidak sempat bertukar panas.",
+      "Pola fluktuasi kecil pada radiasi latar gelombang mikro cocok dengan perkiraan model inflasi."
+    ],
+    batasan: [
+      "Belum ada bukti langsung. Yang dicari adalah gelombang gravitasi primordial dari masa inflasi; klaim deteksi pada 2014 kemudian dijelaskan oleh debu di galaksi kita.",
+      "Penyebab inflasi, yaitu medan apa yang menggerakkannya, belum diketahui, dan ada banyak model yang berbeda.",
+      "Ada model alternatif, misalnya alam semesta yang berulang kali mengerut dan mengembang, yang juga berusaha menjelaskan hal serupa."
+    ],
+    sumber: [
+      "Guth, A. H. (1981). Inflationary universe: A possible solution to the horizon and flatness problems. Physical Review D, 23.",
+      "Planck Collaboration (2020). Planck 2018 results. X. Constraints on inflation. Astronomy & Astrophysics, 641, A10."
+    ]
+  }
+];
+
+// Penjelasan lengkap tiap teori (kunci = id teori)
+const PERLUASAN = {
+ "evolusi-darwin": {
+  "uraian": [
+   "Inti teori ini bisa dipahami lewat tiga kata: variasi, pewarisan, dan seleksi. Dalam satu populasi, tidak ada dua individu yang persis sama. Perbedaan itu muncul antara lain dari mutasi dan dari pencampuran gen saat reproduksi. Jika sebagian perbedaan itu menurun ke keturunan, dan ciri tertentu membuat individu lebih berhasil bertahan serta berkembang biak di lingkungannya, maka ciri itu akan makin umum dari generasi ke generasi.",
+   "Yang berevolusi adalah populasi, bukan individu. Seekor burung tidak mengubah paruhnya selama hidupnya; yang berubah adalah proporsi burung berparuh tertentu di dalam populasi. Perubahan kecil yang menumpuk selama ribuan hingga jutaan generasi bisa menghasilkan perbedaan besar, dan ketika dua kelompok terpisah cukup lama, mereka bisa menjadi spesies yang berbeda.",
+   "Gagasan ini lahir dari pengamatan yang panjang. Darwin berlayar dengan kapal HMS Beagle pada 1831 sampai 1836, mengumpulkan fosil dan spesimen, lalu menghabiskan lebih dari dua puluh tahun mematangkan gagasannya. Pada 1858 ia menerima tulisan Alfred Russel Wallace yang sampai pada kesimpulan serupa, dan keduanya mempresentasikan gagasan itu bersama sebelum buku Darwin terbit pada 1859.",
+   "Pada abad ke-20, genetika Mendel dan penemuan DNA melengkapi teori ini. Sekarang kita tahu bahwa sumber variasinya adalah perubahan pada DNA, dan perubahan itu bisa dilacak. Gabungan evolusi dan genetika ini disebut sintesis evolusi modern."
+  ],
+  "contoh": [
+   "Resistensi antibiotik: saat antibiotik dipakai, bakteri yang kebetulan punya gen kebal bertahan dan berkembang biak, sehingga populasi lama-lama didominasi bakteri yang kebal. Inilah alasan antibiotik tidak boleh dipakai sembarangan.",
+   "Ngengat berbintik di Inggris: saat jelaga industri menggelapkan batang pohon, ngengat berwarna gelap menjadi lebih umum; setelah udara membaik, ngengat berwarna terang kembali dominan.",
+   "Virus flu bermutasi terus-menerus, sehingga vaksin flu perlu diperbarui hampir setiap tahun."
+  ],
+  "salahKaprah": [
+   [
+    "Manusia berasal dari monyet yang ada sekarang.",
+    "Manusia dan kera besar masa kini berbagi nenek moyang bersama yang hidup jutaan tahun lalu. Kita berkerabat, bukan keturunan spesies yang masih hidup sekarang."
+   ],
+   [
+    "Evolusi itu “hanya teori”, jadi belum pasti.",
+    "Dalam sains, teori adalah penjelasan yang sudah diuji luas dan menyatukan banyak fakta, bukan sekadar tebakan. Hal yang sama berlaku untuk teori gravitasi dan teori atom."
+   ],
+   [
+    "Evolusi berarti makhluk hidup makin maju dan sempurna.",
+    "Seleksi alam hanya memilih ciri yang cocok dengan lingkungan pada waktu tertentu. Tidak ada tujuan menuju sempurna, dan ciri yang menguntungkan hari ini bisa merugikan saat lingkungan berubah."
+   ]
+  ],
+  "istilah": [
+   [
+    "Seleksi alam",
+    "Proses ketika ciri yang membantu bertahan hidup dan berkembang biak menjadi makin umum dalam populasi."
+   ],
+   [
+    "Mutasi",
+    "Perubahan pada urutan DNA yang menjadi salah satu sumber variasi baru."
+   ],
+   [
+    "Spesiasi",
+    "Proses terbentuknya spesies baru."
+   ],
+   [
+    "Nenek moyang bersama",
+    "Spesies yang menurunkan dua atau lebih spesies yang berbeda."
+   ]
+  ]
+ },
+ "mekanika-newton": {
+  "uraian": [
+   "Newton merumuskan hukum geraknya dengan sangat ringkas, tetapi cakupannya luas. Hukum I (kelembaman) menyatakan bahwa benda tidak mengubah geraknya sendiri; perubahan gerak selalu membutuhkan gaya. Itu sebabnya penumpang terdorong ke depan saat mobil mengerem mendadak: tubuhnya cenderung melanjutkan gerak.",
+   "Hukum II, F = m·a, menghubungkan gaya dengan percepatan. Dengan gaya yang sama, benda bermassa kecil dipercepat lebih besar daripada benda bermassa besar. Hukum III menyatakan bahwa gaya selalu berpasangan: saat kamu mendorong dinding, dinding mendorongmu dengan gaya yang sama besar ke arah sebaliknya.",
+   "Hukum gravitasi Newton menyatakan bahwa dua benda saling menarik dengan gaya yang sebanding dengan hasil kali massanya dan berbanding terbalik dengan kuadrat jaraknya. Satu hukum yang sama menjelaskan jatuhnya apel dan orbit Bulan mengelilingi Bumi. Ini salah satu penyatuan terbesar dalam sejarah sains: hukum di Bumi dan di langit ternyata sama.",
+   "Mekanika Newton tidak salah; ia adalah pendekatan yang sangat baik dalam batas tertentu. Insinyur masih memakainya untuk merancang jembatan, mesin, dan lintasan roket, karena pada kecepatan rendah dan gravitasi lemah, koreksi relativitas dan kuantum begitu kecil sehingga tidak berarti."
+  ],
+  "contoh": [
+   "Penumpang terdorong ke depan saat bus mengerem mendadak (hukum I).",
+   "Mendorong troli kosong terasa lebih ringan daripada troli penuh belanjaan (hukum II).",
+   "Roket terdorong naik karena menyemburkan gas ke bawah (hukum III).",
+   "Satelit tetap mengorbit karena terus jatuh mengelilingi Bumi di bawah tarikan gravitasi."
+  ],
+  "salahKaprah": [
+   [
+    "Benda yang tidak didorong akan berhenti dengan sendirinya.",
+    "Benda berhenti karena ada gaya, misalnya gesekan atau hambatan udara. Tanpa gaya itu, benda bergerak lurus dengan kecepatan tetap."
+   ],
+   [
+    "Benda yang lebih berat jatuh lebih cepat.",
+    "Tanpa hambatan udara, semua benda jatuh dengan percepatan yang sama. Astronaut Apollo 15 memperlihatkan palu dan bulu jatuh bersamaan di Bulan."
+   ],
+   [
+    "Karena ada relativitas, mekanika Newton sudah tidak dipakai.",
+    "Mekanika Newton masih dipakai luas karena akurat dan jauh lebih sederhana untuk kondisi sehari-hari."
+   ]
+  ],
+  "istilah": [
+   [
+    "Gaya",
+    "Dorongan atau tarikan yang dapat mengubah gerak benda."
+   ],
+   [
+    "Massa",
+    "Ukuran banyaknya materi dalam benda, sekaligus ukuran seberapa sulit geraknya diubah."
+   ],
+   [
+    "Percepatan",
+    "Perubahan kecepatan tiap satuan waktu."
+   ],
+   [
+    "Kelembaman (inersia)",
+    "Kecenderungan benda mempertahankan keadaan geraknya."
+   ]
+  ]
+ },
+ "big-bang": {
+  "uraian": [
+   "Nama Big Bang sering membuat orang membayangkan ledakan di satu titik dalam ruang kosong. Gambaran yang lebih tepat adalah bahwa ruang itu sendiri mengembang. Tidak ada pusat ledakan; di mana pun kamu berada, galaksi-galaksi yang jauh tampak menjauh. Analogi yang sering dipakai adalah titik-titik pada permukaan balon yang ditiup: titik-titik itu saling menjauh, tanpa satu pun menjadi pusat.",
+   "Gagasan ini berawal dari pengamatan. Pada 1920-an, Georges Lemaître dan Edwin Hubble menunjukkan bahwa galaksi-galaksi menjauh, dan makin jauh sebuah galaksi, makin cepat ia menjauh. Kalau alam semesta mengembang sekarang, berarti dulu ia lebih rapat dan lebih panas. Menelusuri arah itu ke belakang, kita sampai pada keadaan yang sangat panas dan padat sekitar 13,8 miliar tahun lalu.",
+   "Prediksi penting teori ini terbukti. Alam semesta awal yang panas pasti memancarkan cahaya yang kini sudah mendingin menjadi gelombang mikro. Itulah radiasi latar gelombang mikro kosmik yang ditemukan secara tidak sengaja pada 1965. Teori ini juga memperkirakan perbandingan hidrogen dan helium yang terbentuk dalam beberapa menit pertama, dan perkiraan itu cocok dengan pengamatan.",
+   "Yang dijelaskan Big Bang adalah bagaimana alam semesta berkembang sejak keadaan awal yang panas dan padat, bukan bagaimana atau mengapa semuanya bermula. Pertanyaan tentang apa yang ada sebelum itu belum terjawab dan masih menjadi wilayah penelitian."
+  ],
+  "contoh": [
+   "Cahaya galaksi yang jauh tampak lebih merah karena ruang yang mengembang meregangkan gelombang cahayanya (pergeseran merah).",
+   "Hampir semua hidrogen di alam semesta, termasuk yang ada di dalam air di gelasmu, terbentuk pada masa Big Bang.",
+   "Titik-titik pada permukaan balon yang ditiup: semuanya saling menjauh, dan tidak ada satu titik pun yang menjadi pusat."
+  ],
+  "salahKaprah": [
+   [
+    "Big Bang adalah ledakan di satu titik di ruang kosong.",
+    "Yang mengembang adalah ruang itu sendiri, di mana-mana sekaligus. Tidak ada pusat atau tepi tempat ledakan terjadi."
+   ],
+   [
+    "Big Bang menjelaskan asal-usul alam semesta dari ketiadaan.",
+    "Teori ini menggambarkan perkembangan alam semesta sejak keadaan awal yang panas dan padat. Apa yang terjadi pada momen paling awal, atau sebelumnya, belum diketahui."
+   ],
+   [
+    "Semua benda di alam semesta ikut membesar karena ekspansi.",
+    "Sistem yang terikat gravitasi, seperti galaksi dan tata surya, tidak ikut mengembang. Yang bertambah luas adalah ruang di antara gugusan galaksi yang berjauhan."
+   ]
+  ],
+  "istilah": [
+   [
+    "Pergeseran merah",
+    "Bergesernya cahaya benda yang menjauh ke panjang gelombang yang lebih panjang (lebih merah)."
+   ],
+   [
+    "Radiasi latar gelombang mikro kosmik",
+    "Sisa cahaya dari alam semesta awal yang kini berupa gelombang mikro."
+   ],
+   [
+    "Ekspansi alam semesta",
+    "Bertambah luasnya ruang seiring waktu."
+   ],
+   [
+    "Nukleosintesis Big Bang",
+    "Pembentukan inti atom ringan, terutama hidrogen dan helium, dalam beberapa menit pertama."
+   ]
+  ]
+ },
+ "materi-gelap": {
+  "uraian": [
+   "Masalahnya dimulai dari gerak. Menurut hukum gravitasi, bintang yang jauh dari pusat galaksi seharusnya bergerak lebih lambat daripada bintang di dekat pusat, seperti planet yang jauh dari Matahari bergerak lebih lambat. Namun pengukuran Vera Rubin dan Kent Ford pada 1970-an menunjukkan bahwa bintang di tepi galaksi bergerak sama cepatnya. Artinya ada gravitasi tambahan yang tidak berasal dari materi yang kita lihat.",
+   "Petunjuknya tidak hanya dari satu jenis pengamatan. Gugusan galaksi membelokkan cahaya yang lewat di dekatnya (lensa gravitasi) lebih kuat daripada yang bisa dijelaskan massa yang terlihat, dan pola radiasi latar gelombang mikro cocok dengan model yang memuat materi tak terlihat. Beberapa pengamatan yang berbeda menunjuk ke arah yang sama, dan itu yang membuat gagasan ini dianggap serius oleh sebagian besar astronom.",
+   "Namun terlihat efeknya berbeda dengan terkonfirmasi wujudnya. Sampai sekarang, belum ada eksperimen yang menangkap partikel materi gelap secara langsung. Para peneliti mencarinya dengan detektor di bawah tanah, dengan pengamatan sinar kosmik, dan dengan tabrakan partikel di akselerator. Karena itu statusnya di sini adalah belum terkonfirmasi langsung.",
+   "Ada pula kemungkinan lain: yang perlu diubah adalah hukum gravitasinya, bukan jumlah materinya. Gagasan seperti MOND mencoba itu dan berhasil menjelaskan gerak banyak galaksi, tetapi lebih sulit menjelaskan pengamatan pada skala gugusan galaksi dan radiasi latar. Perdebatan ini belum selesai."
+  ],
+  "contoh": [
+   "Bayangkan bola yang diputar dengan tali. Kalau kamu tidak melihat talinya tetapi bola tidak terlempar, kamu menyimpulkan ada tali. Materi gelap adalah tali gravitasi yang disimpulkan dari efeknya.",
+   "Pada gugusan galaksi yang bertabrakan (Bullet Cluster), pusat gravitasi terpisah dari gas panas yang terlihat, dan itu sulit dijelaskan tanpa massa yang tidak terlihat."
+  ],
+  "salahKaprah": [
+   [
+    "Materi gelap adalah lubang hitam atau benda gelap biasa.",
+    "Sebagian besar peneliti menilai benda gelap biasa, seperti planet, bintang redup, dan lubang hitam bintang, jumlahnya tidak cukup untuk menjelaskannya. Yang dicari umumnya jenis partikel baru."
+   ],
+   [
+    "Materi gelap sama dengan energi gelap.",
+    "Keduanya berbeda. Materi gelap menambah tarikan gravitasi, sedangkan energi gelap adalah sebutan untuk penyebab percepatan pengembangan alam semesta."
+   ],
+   [
+    "Materi gelap sudah ditemukan.",
+    "Yang teramati adalah efek gravitasinya, bukan partikelnya."
+   ]
+  ],
+  "istilah": [
+   [
+    "Kurva rotasi",
+    "Grafik kecepatan bintang terhadap jaraknya dari pusat galaksi."
+   ],
+   [
+    "Lensa gravitasi",
+    "Pembelokan cahaya oleh gravitasi benda bermassa besar."
+   ],
+   [
+    "MOND",
+    "Usulan mengubah hukum gravitasi pada percepatan yang sangat kecil, sebagai alternatif materi gelap."
+   ],
+   [
+    "WIMP",
+    "Salah satu kandidat partikel materi gelap, yang berinteraksi sangat lemah dengan materi biasa."
+   ]
+  ]
+ },
+ "relativitas": {
+  "uraian": [
+   "Relativitas khusus berawal dari dua pernyataan sederhana: hukum fisika sama bagi semua pengamat yang bergerak lurus dengan kecepatan tetap, dan kecepatan cahaya di ruang hampa selalu sama, siapa pun yang mengukurnya. Konsekuensinya mengejutkan: waktu dan jarak tidak mutlak. Pengamat yang bergerak relatif satu sama lain bisa berbeda pendapat tentang berapa lama suatu peristiwa berlangsung dan seberapa panjang suatu benda, dan semuanya tetap konsisten.",
+   "Efek ini sangat kecil pada kecepatan sehari-hari, tetapi nyata dan terukur. Partikel muon yang tercipta di atmosfer atas bisa mencapai permukaan Bumi karena jam mereka berdetak lebih lambat pada kecepatan mendekati cahaya. Jam atom berketelitian tinggi yang dibawa dengan pesawat juga menunjukkan selisih waktu yang sesuai dengan hitungan.",
+   "Relativitas umum memperluas gagasan itu ke gravitasi. Alih-alih gaya tarik, massa dan energi melengkungkan ruang-waktu, dan benda mengikuti lintasan terlurus di ruang yang melengkung itu. Gambaran populernya adalah bola berat di atas kain karet yang meregang. Gambaran itu membantu, tetapi hanya sebagian: yang melengkung adalah ruang dan waktu sekaligus, bukan hanya permukaan.",
+   "Gravitasi juga memengaruhi waktu: jam di tempat yang gravitasinya lebih kuat berdetak lebih lambat. Satelit GPS mengalami dua efek yang berlawanan, yaitu geraknya yang cepat memperlambat jamnya dan gravitasi yang lebih lemah di orbit mempercepatnya. Jika tidak dikoreksi, kesalahan posisi GPS akan menumpuk hingga beberapa kilometer per hari."
+  ],
+  "contoh": [
+   "GPS di ponselmu bergantung pada koreksi dari relativitas khusus dan umum.",
+   "Lensa gravitasi: galaksi besar membelokkan cahaya galaksi di belakangnya sehingga gambarnya tampak melengkung atau berganda.",
+   "Lubang hitam dan gelombang gravitasi adalah prediksi relativitas umum yang kini sudah diamati."
+  ],
+  "salahKaprah": [
+   [
+    "Relativitas berarti semuanya relatif, termasuk kebenaran.",
+    "Teori ini justru menemukan besaran yang sama bagi semua pengamat, misalnya kecepatan cahaya. Yang relatif adalah hasil ukur waktu dan jarak."
+   ],
+   [
+    "Tidak ada yang lebih cepat dari cahaya karena cahaya tidak bisa dikalahkan.",
+    "Alasannya lebih mendasar: makin cepat benda bergerak, makin besar energi yang dibutuhkan untuk mempercepatnya lagi, dan benda bermassa tidak akan pernah mencapai kecepatan cahaya."
+   ],
+   [
+    "E = mc² berarti massa bisa diubah menjadi energi seenaknya.",
+    "Rumus itu menyatakan bahwa massa dan energi setara. Pada reaksi nuklir, sebagian kecil massa memang berubah menjadi energi dalam jumlah besar, tetapi itu terjadi hanya dalam proses tertentu."
+   ]
+  ],
+  "istilah": [
+   [
+    "Ruang-waktu",
+    "Gabungan tiga dimensi ruang dan satu dimensi waktu dalam satu kerangka."
+   ],
+   [
+    "Pemuluran waktu",
+    "Jam yang bergerak atau berada di gravitasi kuat berdetak lebih lambat dibanding jam pengamat."
+   ],
+   [
+    "Gelombang gravitasi",
+    "Riak ruang-waktu akibat benda bermassa besar yang bergerak dipercepat, misalnya dua lubang hitam yang bertabrakan."
+   ],
+   [
+    "Lubang hitam",
+    "Daerah dengan gravitasi begitu kuat sehingga cahaya pun tidak bisa lolos."
+   ]
+  ]
+ },
+ "tektonik-lempeng": {
+  "uraian": [
+   "Bagian terluar Bumi bukan satu kulit yang utuh. Ia terpecah menjadi belasan lempeng besar dan kecil. Tiap lempeng terdiri dari kerak dan bagian atas mantel yang kaku, dan bergerak perlahan di atas lapisan di bawahnya yang lebih lunak dan lentur. Kecepatannya sekitar beberapa sentimeter per tahun, kira-kira secepat tumbuhnya kuku.",
+   "Sebagian besar aktivitas geologi terjadi di batas lempeng. Di batas yang saling menjauh, seperti punggungan tengah Samudra Atlantik, magma naik dan membentuk kerak baru. Di batas yang saling bertumbukan, lempeng samudra yang lebih berat bisa menunjam ke bawah lempeng lain (zona subduksi), memicu gempa besar dan gunung api; jika dua lempeng benua bertabrakan, terbentuk pegunungan seperti Himalaya. Di batas yang saling bergeser mendatar, seperti Sesar San Andreas, gempa terjadi saat tegangan terlepas.",
+   "Gagasan ini punya sejarah yang menarik. Alfred Wegener mengusulkan pergeseran benua pada 1912 berdasarkan kecocokan garis pantai dan fosil, tetapi ia tidak bisa menjelaskan gaya yang menggerakkan benua, dan banyak ilmuwan menolaknya. Baru pada 1950-an dan 1960-an, pemetaan dasar laut, pola magnet batuan, dan sebaran gempa memberi bukti yang meyakinkan, dan teori tektonik lempeng pun diterima luas.",
+   "Bagi Indonesia, teori ini penting secara langsung. Kepulauan kita berada di pertemuan beberapa lempeng, antara lain Eurasia dan Indo-Australia, sehingga banyak gempa dan gunung api. Pemahaman tentang zona subduksi membantu memetakan daerah rawan gempa dan tsunami, meski waktu kejadiannya belum bisa diprediksi."
+  ],
+  "contoh": [
+   "Cincin Api Pasifik, sabuk gempa dan gunung api yang mengelilingi Samudra Pasifik.",
+   "Himalaya masih naik beberapa milimeter per tahun karena tumbukan lempeng India dan Eurasia.",
+   "Islandia dilalui punggungan tengah Atlantik, dan di sana celah antara dua lempeng bisa dilihat langsung di daratan."
+  ],
+  "salahKaprah": [
+   [
+    "Benua mengapung di atas lautan lava.",
+    "Mantel Bumi sebagian besar padat; ia hanya bisa mengalir sangat lambat dalam rentang waktu geologi. Lava berasal dari kantong magma, bukan dari lautan cair."
+   ],
+   [
+    "Teori ini bisa memprediksi kapan gempa terjadi.",
+    "Teori menjelaskan di mana gempa cenderung terjadi, tetapi waktu tepatnya belum bisa diprediksi."
+   ],
+   [
+    "Hanya benua yang bergerak.",
+    "Yang bergerak adalah lempeng, dan satu lempeng bisa memuat benua sekaligus dasar laut."
+   ]
+  ],
+  "istilah": [
+   [
+    "Litosfer",
+    "Lapisan kaku terluar Bumi yang terdiri dari kerak dan bagian atas mantel."
+   ],
+   [
+    "Subduksi",
+    "Proses ketika satu lempeng menunjam ke bawah lempeng lain."
+   ],
+   [
+    "Punggungan tengah samudra",
+    "Rangkaian pegunungan di dasar laut tempat kerak baru terbentuk."
+   ],
+   [
+    "Sesar",
+    "Retakan pada kerak tempat dua blok batuan bergeser."
+   ]
+  ]
+ },
+ "teori-atom": {
+  "uraian": [
+   "Gagasan bahwa materi tersusun dari partikel kecil yang tak terbagi sudah ada sejak zaman Yunani kuno, termasuk dalam pemikiran Demokritos. Namun baru pada awal abad ke-19 John Dalton menjadikannya teori ilmiah dengan bukti dari kimia: unsur bergabung dalam perbandingan massa yang tetap, dan itu mudah dijelaskan jika tiap unsur terdiri dari atom yang identik.",
+   "Sejak itu, model atom berubah tiap kali ada percobaan baru. Percobaan Thomson menemukan elektron, sehingga atom ternyata punya bagian yang lebih kecil. Percobaan Rutherford, Geiger, dan Marsden menembakkan partikel alfa ke lembaran emas yang tipis. Sebagian besar menembus lurus, tetapi sebagian kecil terpental balik, sehingga disimpulkan bahwa massa atom terkumpul di inti yang sangat kecil dan bermuatan positif.",
+   "Model Bohr menjelaskan mengapa atom hidrogen hanya memancarkan warna cahaya tertentu: elektron hanya boleh menempati tingkat energi tertentu, dan cahaya dipancarkan saat elektron turun antartingkat. Tetapi model ini gagal untuk atom yang lebih rumit. Model yang dipakai sekarang berasal dari mekanika kuantum, yang menggambarkan elektron sebagai gelombang peluang di sekitar inti, bukan titik yang mengorbit seperti planet.",
+   "Ukuran atom sangat kecil: jari-jarinya sekitar sepersepuluh miliar meter, dan intinya sekitar seratus ribu kali lebih kecil lagi. Karena itu, sebagian besar volume atom hanya ditempati awan peluang elektron. Benda terasa padat karena elektron-elektronnya saling menolak, bukan karena atom benar-benar bersentuhan."
+  ],
+  "contoh": [
+   "Warna kembang api: tiap unsur memancarkan warna khas karena tingkat energi elektronnya, misalnya natrium kuning dan stronsium merah.",
+   "Lampu neon dan lampu natrium di jalan raya memancarkan warna khas dari atom gas di dalamnya.",
+   "Tabel periodik: urutan unsur mengikuti jumlah proton, dan sifat kimianya mengikuti susunan elektron."
+  ],
+  "salahKaprah": [
+   [
+    "Elektron mengorbit inti seperti planet mengorbit Matahari.",
+    "Itu gambaran model Bohr yang sudah disederhanakan. Dalam model kuantum, elektron berada di orbital, yaitu daerah dengan peluang tertentu."
+   ],
+   [
+    "Atom adalah bagian terkecil dari materi.",
+    "Atom terdiri dari proton, neutron, dan elektron; proton dan neutron pun tersusun dari kuark."
+   ],
+   [
+    "Atom sebagian besar berisi benda padat.",
+    "Intinya sangat kecil, dan sebagian besar volume atom hanya ditempati awan peluang elektron."
+   ]
+  ],
+  "istilah": [
+   [
+    "Proton",
+    "Partikel bermuatan positif di inti atom."
+   ],
+   [
+    "Neutron",
+    "Partikel tanpa muatan di inti atom."
+   ],
+   [
+    "Elektron",
+    "Partikel bermuatan negatif yang berada di sekitar inti."
+   ],
+   [
+    "Orbital",
+    "Daerah di sekitar inti tempat elektron paling mungkin ditemukan."
+   ],
+   [
+    "Isotop",
+    "Atom dari unsur yang sama dengan jumlah neutron berbeda."
+   ]
+  ]
+ },
+ "mekanika-kuantum": {
+  "uraian": [
+   "Mekanika kuantum lahir dari masalah yang tidak bisa dipecahkan fisika klasik. Pada 1900, Max Planck menemukan bahwa radiasi benda panas hanya cocok dengan pengamatan jika energi dipancarkan dalam paket-paket tertentu. Pada 1905, Einstein memakai gagasan itu untuk menjelaskan efek fotolistrik: cahaya bertindak seperti aliran paket energi (foton) saat berinteraksi dengan logam.",
+   "Dunia kuantum mengubah cara kita menggambarkan keadaan sebuah benda. Sebelum diukur, elektron tidak dijelaskan dengan satu posisi pasti, tetapi dengan fungsi gelombang yang menyatakan peluang menemukannya di tempat-tempat tertentu. Saat diukur, kita mendapat satu hasil, dan teori hanya bisa memberi peluang bagi tiap hasil. Dalam rumusan standar, peluang itu bukan akibat alat ukur yang kurang teliti.",
+   "Prinsip ketidakpastian Heisenberg sering disalahpahami sebagai gangguan akibat alat ukur. Dalam pemahaman sekarang, prinsip ini menyatakan bahwa posisi dan momentum bukan sifat yang sekaligus punya nilai pasti: makin tepat salah satunya ditentukan, makin tidak pasti yang lain.",
+   "Teori ini sangat sukses secara praktis, tetapi maknanya masih diperdebatkan. Ada tafsiran Kopenhagen, tafsiran dunia-banyak, dan lainnya. Semuanya memakai matematika yang sama dan memberi prediksi eksperimen yang sama, sehingga sulit memilih di antaranya lewat percobaan. Ini bukan keraguan pada hasil hitungan, melainkan pertanyaan tentang apa yang sebenarnya digambarkan oleh hitungan itu."
+  ],
+  "contoh": [
+   "Laser, transistor, dan LED bekerja berdasarkan perilaku kuantum elektron dalam bahan.",
+   "MRI memanfaatkan sifat kuantum inti atom hidrogen di dalam tubuh.",
+   "Jam atom, yang menjadi dasar GPS, mengandalkan tingkat energi atom yang pasti."
+  ],
+  "salahKaprah": [
+   [
+    "Kesadaran manusia memengaruhi hasil pengukuran kuantum.",
+    "Dalam fisika, pengukuran berarti interaksi dengan alat ukur atau lingkungan, bukan pikiran seseorang."
+   ],
+   [
+    "Mekanika kuantum berarti segala hal mungkin terjadi.",
+    "Teori ini memberi peluang yang bisa dihitung dengan sangat teliti. Banyak hal yang peluangnya sangat kecil sehingga praktis tidak pernah terjadi pada benda besar."
+   ],
+   [
+    "Kata kuantum bisa dipakai menjelaskan apa saja, termasuk penyembuhan atau energi spiritual.",
+    "Efek kuantum nyata pada skala atom dan hampir tak terlihat pada benda besar. Klaim yang memakai kata kuantum tanpa hitungan dan eksperimen biasanya bukan sains."
+   ]
+  ],
+  "istilah": [
+   [
+    "Kuanta",
+    "Paket energi yang terpisah-pisah (diskret)."
+   ],
+   [
+    "Foton",
+    "Paket energi cahaya."
+   ],
+   [
+    "Fungsi gelombang",
+    "Besaran matematis yang memberi peluang hasil pengukuran sebuah sistem kuantum."
+   ],
+   [
+    "Superposisi",
+    "Keadaan gabungan dari beberapa keadaan yang mungkin, sebelum diukur."
+   ]
+  ]
+ },
+ "teori-string": {
+  "uraian": [
+   "Fisika punya dua teori yang sangat sukses tetapi tidak cocok satu sama lain: mekanika kuantum untuk yang sangat kecil, dan relativitas umum untuk gravitasi dan yang sangat besar. Pada kebanyakan keadaan keduanya tidak bertabrakan, tetapi di tempat seperti pusat lubang hitam atau momen awal alam semesta, keduanya sama-sama dibutuhkan, dan hasil hitungannya bermasalah. Teori string adalah salah satu upaya untuk menyatukannya.",
+   "Idenya: jika partikel dasar bukan titik tanpa ukuran, melainkan untaian satu dimensi yang sangat kecil, beberapa masalah matematika hilang. Untaian yang bergetar dengan pola berbeda tampak sebagai partikel berbeda, seperti dawai gitar yang menghasilkan nada berbeda. Salah satu pola getar ternyata sesuai dengan graviton. Ini yang membuat banyak fisikawan tertarik: gravitasi muncul dengan sendirinya dari teorinya.",
+   "Harga yang harus dibayar adalah dimensi tambahan. Agar konsisten, teori ini memerlukan 10 atau 11 dimensi ruang-waktu. Kita hanya mengalami empat (tiga ruang dan satu waktu), sehingga dimensi lainnya dianggap melingkar dengan ukuran yang sangat kecil sehingga tidak teramati. Bentuk dimensi tambahan itu menentukan partikel dan gaya yang kita lihat, dan jumlah kemungkinan bentuknya sangat besar.",
+   "Inilah sumber perdebatan terbesarnya. Karena energi untuk menguji untaian itu jauh di luar jangkauan teknologi saat ini, dan karena teorinya punya banyak versi, belum ada prediksi jelas yang bisa dibenarkan atau dibantah oleh eksperimen. Pendukungnya menilai konsistensi matematis dan hasil pada lubang hitam sebagai alasan untuk terus meneliti. Pengkritiknya menilai teori yang tidak bisa diuji kehilangan ciri utama sains. Kedua pandangan itu ada di kalangan fisikawan serius."
+  ],
+  "contoh": [
+   "Dawai gitar: satu dawai bisa menghasilkan banyak nada tergantung pola getarnya. Dalam teori string, satu jenis untaian menghasilkan banyak jenis partikel.",
+   "Selang kebun dilihat dari jauh tampak seperti garis satu dimensi, tetapi dari dekat punya dimensi tambahan yang melingkar. Gambaran serupa dipakai untuk dimensi tambahan dalam teori ini."
+  ],
+  "salahKaprah": [
+   [
+    "Teori string sudah terbukti.",
+    "Belum ada eksperimen yang membuktikannya. Statusnya masih gagasan matematis yang menarik dan terus diteliti."
+   ],
+   [
+    "Teori string sudah dibantah.",
+    "Belum juga. Ia belum menghasilkan prediksi yang bisa diuji, jadi belum bisa dibantah lewat eksperimen."
+   ],
+   [
+    "Dimensi tambahan berarti ada dunia paralel yang bisa dimasuki.",
+    "Dalam teori string, dimensi tambahan adalah bagian dari struktur ruang-waktu, bukan pintu ke tempat lain."
+   ]
+  ],
+  "istilah": [
+   [
+    "Untaian (string)",
+    "Objek satu dimensi yang sangat kecil, yang diusulkan sebagai penyusun partikel dasar."
+   ],
+   [
+    "Graviton",
+    "Partikel hipotetis pembawa gaya gravitasi."
+   ],
+   [
+    "Dimensi tambahan",
+    "Dimensi ruang di luar tiga dimensi yang kita alami, yang dianggap sangat kecil dan melingkar."
+   ],
+   [
+    "Gravitasi kuantum",
+    "Teori yang menjelaskan gravitasi sekaligus dengan prinsip mekanika kuantum; belum ada yang terbukti."
+   ]
+  ]
+ },
+ "inflasi-kosmik": {
+  "uraian": [
+   "Teori Big Bang menjelaskan banyak hal, tetapi meninggalkan beberapa teka-teki tentang keadaan awal alam semesta. Pertama, radiasi latar gelombang mikro hampir sama suhunya di semua arah, bahkan di wilayah yang begitu berjauhan sehingga, tanpa sesuatu yang istimewa, tidak sempat bertukar panas. Kedua, geometri alam semesta tampak sangat dekat dengan datar, padahal keadaan itu mudah bergeser jika awalnya sedikit berbeda.",
+   "Alan Guth mengusulkan pada 1981 bahwa pada sepersekian detik pertama, ruang mengalami pengembangan yang sangat cepat. Wilayah yang awalnya sangat kecil dan sempat seragam suhunya terentang menjadi ukuran yang sangat besar, sehingga seragamnya suhu dan datarnya geometri menjadi wajar. Starobinsky dan Linde mengembangkan versi yang disempurnakan.",
+   "Inflasi juga memberi penjelasan tentang asal galaksi. Fluktuasi kuantum yang sangat kecil ikut terentang oleh pengembangan itu, menjadi variasi kerapatan yang kemudian tumbuh oleh gravitasi menjadi galaksi dan gugusan galaksi. Pola variasi itu terlihat sebagai bintik-bintik suhu kecil pada peta radiasi latar gelombang mikro, dan pengukuran satelit seperti Planck menemukan pola yang cocok dengan perkiraan model inflasi sederhana.",
+   "Meski begitu, inflasi belum dianggap terbukti langsung. Ramalan khasnya adalah gelombang gravitasi primordial yang akan meninggalkan pola tertentu pada polarisasi radiasi latar. Pola itu belum terdeteksi, dan klaim pada 2014 gugur karena sinyalnya berasal dari debu di galaksi kita. Selain itu, belum diketahui medan apa yang mendorong inflasi, dan beberapa ilmuwan mengusulkan skenario lain untuk menjelaskan teka-teki yang sama."
+  ],
+  "contoh": [
+   "Balon yang ditiup hingga besar: permukaan yang tadinya berkerut tampak licin dan datar setelah balon menggembung.",
+   "Setetes tinta pada kertas kecil yang ditarik hingga selebar lapangan: pola kecil pada tinta ikut terentang menjadi pola besar. Begitu pula fluktuasi kuantum yang kecil menjadi benih galaksi."
+  ],
+  "salahKaprah": [
+   [
+    "Inflasi berarti alam semesta mengembang lebih cepat dari cahaya, sehingga melanggar relativitas.",
+    "Relativitas membatasi gerak benda menembus ruang. Pengembangan ruang itu sendiri tidak dibatasi aturan tersebut."
+   ],
+   [
+    "Inflasi kosmik sama dengan percepatan ekspansi alam semesta sekarang.",
+    "Keduanya berbeda: inflasi terjadi pada sepersekian detik pertama, sedangkan percepatan ekspansi saat ini (dikaitkan dengan energi gelap) terjadi miliaran tahun kemudian."
+   ],
+   [
+    "Inflasi sudah dibuktikan oleh satelit Planck.",
+    "Data Planck cocok dengan prediksi inflasi dan menyingkirkan sebagian model, tetapi tidak membuktikan inflasi secara langsung."
+   ]
+  ],
+  "istilah": [
+   [
+    "Inflasi",
+    "Pengembangan ruang yang sangat cepat pada sepersekian detik pertama alam semesta."
+   ],
+   [
+    "Masalah horizon",
+    "Teka-teki mengapa wilayah alam semesta yang berjauhan punya suhu hampir sama."
+   ],
+   [
+    "Masalah kedataran",
+    "Teka-teki mengapa geometri alam semesta begitu dekat dengan datar."
+   ],
+   [
+    "Gelombang gravitasi primordial",
+    "Gelombang gravitasi dari masa awal yang diramalkan inflasi, belum terdeteksi."
+   ]
+  ]
+ }
+};
+
+const FAKTA = [
+  "Cahaya Matahari butuh sekitar 8 menit 20 detik untuk sampai ke Bumi.",
+  "Gurita punya tiga jantung.",
+  "Di Venus, satu hari (satu putaran rotasi) lebih panjang daripada satu tahunnya.",
+  "Madu yang disimpan dengan baik hampir tidak membusuk karena kadar airnya rendah dan sifatnya asam.",
+  "DNA manusia dan simpanse mirip sekitar 98% pada bagian yang bisa disejajarkan."
+];
+
+  </script>
+  <script>
+    var aktif = "semua";
+    var cari = document.getElementById("cari");
+    var daftar = document.getElementById("daftar");
+    var filter = document.getElementById("filter");
+    var JUDUL_HOME = document.title;
+    TEORI.forEach(function (t) { Object.assign(t, PERLUASAN[t.id] || {}); });
+
+    function el(tag, teks, kelas) {
+      var e = document.createElement(tag);
+      if (teks) e.textContent = teks;
+      if (kelas) e.className = kelas;
+      return e;
+    }
+
+    // ===== Beranda =====
+    var hari = Math.floor(Date.now() / 86400000);
+    document.getElementById("fakta").textContent = FAKTA[hari % FAKTA.length];
+
+    var opsi = [["semua", "Semua"]].concat(Object.keys(STATUS).map(function (k) { return [k, STATUS[k]]; }));
+    opsi.forEach(function (o) {
+      var b = el("button", o[1]);
+      b.type = "button";
+      b.setAttribute("aria-pressed", o[0] === aktif);
+      b.addEventListener("click", function () {
+        aktif = o[0];
+        filter.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+        tampil();
+      });
+      filter.appendChild(b);
+    });
+
+    function tampil() {
+      var q = cari.value.trim().toLowerCase();
+      var hasil = TEORI.filter(function (t) {
+        var cocok = aktif === "semua" || t.status === aktif;
+        var cocokBidang = aktifBidang === "semua" || daftarBidang(t.bidang).indexOf(aktifBidang) !== -1;
+        return cocok && cocokBidang && (t.judul + " " + t.ringkas + " " + t.bidang).toLowerCase().indexOf(q) !== -1;
+      });
+      daftar.textContent = "";
+      document.getElementById("hitung").textContent = (hasil.length === TEORI.length ? hasil.length + " teori" : hasil.length + " dari " + TEORI.length + " teori");
+      if (!hasil.length) {
+        daftar.appendChild(el("li", "Tidak ada teori yang cocok. Coba kata kunci lain atau pilih \"Semua\".", "kosong"));
+        return;
+      }
+      hasil.forEach(function (t) {
+        var li = el("li");
+        var a = el("a");
+        a.href = "#" + encodeURIComponent(t.id);
+        var meta = el("div", "", "meta");
+        meta.appendChild(el("span", t.bidang));
+        meta.appendChild(el("span", STATUS[t.status], "chip s-" + t.status));
+        a.appendChild(meta);
+        a.appendChild(el("h3", t.judul));
+        a.appendChild(el("p", t.ringkas));
+        li.appendChild(a);
+        daftar.appendChild(li);
+      });
+    }
+    // Filter bidang: "Fisika dan Kimia" dihitung sebagai dua bidang
+    var aktifBidang = "semua";
+    var filterBidang = document.getElementById("filter-bidang");
+    function daftarBidang(b) { return b.split(" dan "); }
+    var semuaBidang = [];
+    TEORI.forEach(function (t) {
+      daftarBidang(t.bidang).forEach(function (b) { if (semuaBidang.indexOf(b) === -1) semuaBidang.push(b); });
+    });
+    semuaBidang.sort(function (a, b) { return a.localeCompare(b, "id"); });
+    [["semua", "Semua"]].concat(semuaBidang.map(function (b) { return [b, b]; })).forEach(function (o) {
+      var b = el("button", o[1]);
+      b.type = "button";
+      b.setAttribute("aria-pressed", o[0] === aktifBidang);
+      b.addEventListener("click", function () {
+        aktifBidang = o[0];
+        filterBidang.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+        tampil();
+      });
+      filterBidang.appendChild(b);
+    });
+
+    cari.addEventListener("input", tampil);
+    tampil();
+
+    var dl = document.getElementById("legenda");
+    Object.keys(STATUS).forEach(function (k) {
+      dl.appendChild(el("dt", STATUS[k], "chip s-" + k));
+      dl.appendChild(el("dd", ARTI[k]));
+    });
+
+    var GAMBAR = {
+      pohon: {
+        alt: "Pohon kekerabatan: monyet bercabang lebih dulu, lalu gorila, lalu simpanse dan manusia bercabang paling akhir.",
+        cap: "Contoh pohon kekerabatan (disederhanakan). Makin dekat percabangan dua spesies, makin dekat kekerabatannya.",
+        svg: `<svg viewBox="0 0 300 180" role="img" aria-label="Pohon kekerabatan: monyet bercabang lebih dulu, lalu gorila, lalu simpanse dan manusia bercabang paling akhir."><path class="garis" d="M190 30H20V100H70M70 70V135H120M70 70H190M120 115V155M120 115H190M120 155H190"/><text x="198" y="35">Monyet</text><text x="198" y="75">Gorila</text><text x="198" y="120">Simpanse</text><text x="198" y="160">Manusia</text></svg>`
+      },
+      wilayah: {
+        alt: "Peta wilayah berlaku teori fisika menurut ukuran dan kecepatan. Mekanika Newton berlaku untuk benda besar yang bergerak lambat.",
+        cap: "Wilayah berlaku tiap teori fisika menurut ukuran benda (mendatar) dan kecepatannya (tegak). Gravitasi yang sangat kuat, misalnya dekat lubang hitam, juga di luar wilayah Newton dan tidak digambar di sini.",
+        svg: `<svg viewBox="0 0 320 190" role="img" aria-label="Peta wilayah berlaku teori fisika menurut ukuran dan kecepatan. Mekanika Newton berlaku untuk benda besar yang bergerak lambat."><g fill="none" stroke="currentColor" stroke-opacity=".35"><rect x="56" y="10" width="125" height="75"/><rect x="181" y="10" width="125" height="75"/><rect x="56" y="85" width="125" height="75"/></g><rect class="area-newton" x="181" y="85" width="125" height="75"/><g text-anchor="middle"><text x="118.5" y="43">Teori medan</text><text x="118.5" y="59">kuantum</text><text x="243.5" y="43">Relativitas</text><text x="243.5" y="59">khusus</text><text x="118.5" y="118">Mekanika</text><text x="118.5" y="134">kuantum</text><text x="243.5" y="118" font-weight="700">Mekanika</text><text x="243.5" y="134" font-weight="700">Newton</text><text x="181" y="182">Ukuran benda</text></g><text x="2" y="52">Cepat</text><text x="2" y="127">Lambat</text><text x="56" y="182">Kecil</text><text x="306" y="182" text-anchor="end">Besar</text></svg>`
+      },
+      rotasi: {
+        alt: "Grafik ilustrasi kecepatan bintang terhadap jarak dari pusat galaksi. Kecepatan teramati tetap tinggi, sedangkan perhitungan dari materi terlihat turun.",
+        cap: "Ilustrasi kualitatif, bukan data pengukuran. Kecepatan bintang yang teramati tetap tinggi di tepi galaksi, padahal perhitungan dari materi yang terlihat memperkirakan turun.",
+        svg: `<svg viewBox="0 0 320 190" role="img" aria-label="Grafik ilustrasi kecepatan bintang terhadap jarak dari pusat galaksi. Kecepatan teramati tetap tinggi, sedangkan perhitungan dari materi terlihat turun."><path class="garis" stroke-opacity=".5" d="M40 12V150H300"/><path class="garis aksen" style="stroke-width:3" d="M40 150C70 60 100 50 130 48H300"/><path class="garis" stroke-dasharray="6 5" stroke-opacity=".7" d="M40 150C70 60 100 50 130 52C190 60 250 100 300 126"/><text x="46" y="16">Kecepatan bintang</text><text class="aksen-teks" x="200" y="38">Teramati</text><text x="60" y="143" fill-opacity=".75">Dihitung dari materi terlihat</text><text x="170" y="178" text-anchor="middle">Jarak dari pusat galaksi</text></svg>`
+      }
+    };
+
+    function gambar(kunci) {
+      var g = GAMBAR[kunci];
+      if (!g) return;
+      var f = el("figure", "", "fig");
+      f.insertAdjacentHTML("beforeend", g.svg);
+      f.appendChild(el("figcaption", g.cap));
+      isi.appendChild(f);
+    }
+
+    // ===== Halaman teori =====
+    var isi = document.getElementById("isi");
+
+    function bagian(judul, items, kelas) {
+      isi.appendChild(el("h2", judul));
+      var ul = el("ul", "", kelas);
+      items.forEach(function (s) { ul.appendChild(el("li", s)); });
+      isi.appendChild(ul);
+    }
+
+    function uraianTeori(t) {
+      if (t.uraian) {
+        isi.appendChild(el("h2", "Penjelasan lebih dalam"));
+        t.uraian.forEach(function (x) { isi.appendChild(el("p", x)); });
+      }
+      if (t.contoh) bagian("Contoh dan analogi", t.contoh);
+    }
+
+    function tambahan(t) {
+      if (t.salahKaprah) {
+        isi.appendChild(el("h2", "Salah kaprah yang sering muncul"));
+        var ul = el("ul", "", "kaprah");
+        t.salahKaprah.forEach(function (k) {
+          var li = el("li");
+          li.appendChild(el("strong", "Anggapan: "));
+          li.appendChild(document.createTextNode(k[0]));
+          li.appendChild(document.createElement("br"));
+          li.appendChild(el("strong", "Faktanya: "));
+          li.appendChild(document.createTextNode(k[1]));
+          ul.appendChild(li);
+        });
+        isi.appendChild(ul);
+      }
+      if (t.istilah) {
+        isi.appendChild(el("h2", "Istilah penting"));
+        var dl = el("dl", "", "istilah");
+        t.istilah.forEach(function (i) {
+          dl.appendChild(el("dt", i[0]));
+          dl.appendChild(el("dd", i[1]));
+        });
+        isi.appendChild(dl);
+      }
+    }
+
+    function tampilTeori(t) {
+      isi.textContent = "";
+      document.title = t.judul + " | Fakta Sains";
+      isi.appendChild(el("p", t.bidang, "tokoh"));
+      isi.appendChild(el("h1", t.judul));
+      isi.appendChild(el("p", t.tokoh + ", " + t.tahun, "tokoh"));
+      isi.appendChild(el("p", t.ringkas));
+
+      var sp = el("div", "", "spektrum s-" + t.status);
+      sp.setAttribute("role", "img");
+      sp.setAttribute("aria-label", "Status: " + STATUS[t.status]);
+      ["debat", "syarat", "kuat"].forEach(function (k) {
+        sp.appendChild(el("span", STATUS[k], k === t.status ? "on" : ""));
+      });
+      isi.appendChild(sp);
+      isi.appendChild(el("p", ARTI[t.status], "spektrum-arti"));
+      isi.appendChild(el("p", t.statusNote, "spektrum-note"));
+
+      bagian("Gagasan inti", t.inti);
+      gambar(t.gambar);
+      uraianTeori(t);
+      bagian("Bukti pendukung", t.bukti);
+      bagian("Batasan dan syarat", t.batasan);
+      tambahan(t);
+      bagian("Sumber", t.sumber, "sumber");
+    }
+
+    function tidakAda() {
+      isi.textContent = "";
+      document.title = "Teori tidak ditemukan | Fakta Sains";
+      isi.appendChild(el("h1", "Teori tidak ditemukan"));
+      var p = el("p", "Halaman ini tidak ada. ");
+      var a = el("a", "Lihat semua teori");
+      a.href = "#";
+      p.appendChild(a);
+      isi.appendChild(p);
+    }
+
+    // ===== Pindah halaman lewat #hash =====
+    function rute() {
+      var id = decodeURIComponent(location.hash.slice(1));
+      var t = TEORI.filter(function (x) { return x.id === id; })[0];
+      var beranda = !id;
+      document.getElementById("home").hidden = !beranda;
+      isi.hidden = beranda;
+      document.getElementById("kembali").hidden = beranda;
+      document.getElementById("catatan").hidden = !beranda;
+      if (beranda) document.title = JUDUL_HOME;
+      else if (t) tampilTeori(t);
+      else tidakAda();
+      window.scrollTo(0, 0);
+    }
+    window.addEventListener("hashchange", rute);
+    rute();
+  </script>
+</body>
+</html>
